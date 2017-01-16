@@ -1,0 +1,18 @@
+<h1 class="l-page-tlt hidden-xs" style="display:none">Prospects & Partners</h1>
+<div class="l-sub-nav-panel">
+    <div class="l-sub-nav-lft pull-left">
+        <ul class="l-sub-nav">
+            <li (click)="onTabClick('self')" class="l-current_page"><a title="Mine">Mine</a></li>
+            <li (click)="onTabClick('all')"><a title="All">All</a></li>
+        </ul>
+    </div>
+    <div class="l-sub-nav-rht pull-right">
+	<button (click)="openNewTrialAccountPage()" class="btn btn-primary" role="button" title="Create New Trial">
+	<i class="zmdi zmdi-plus"></i> Create New Trial
+	</button>
+</div>
+</div>
+<div class="clearfix"></div>
+<div class="l-sub-tab-container">
+<prospect-partners-users [isMine]="isMine"></prospect-partners-users>
+</div>

@@ -1,0 +1,1794 @@
+
+    <h1 class="l-page-tlt">New Trial Account</h1>
+    <div class="info-container">
+        <!-- / New trial wizard ST -->
+        <div class="row l-wizard">
+            <div class="l-wizard-progress">
+                <div class="l-step l-in-progress" id="wstep-1">
+                    Add<br class="hidden-lg hidden-md hidden-sm" />Company
+                    <div class="l-node">1</div>
+                </div>
+                <div class="l-step l-incomplete" id="wstep-2">
+                    Add<br class="hidden-lg hidden-md hidden-sm" />Contacts
+                    <div class="l-node">2</div>
+                </div>
+                <div class="l-step l-incomplete" id="wstep-3">
+                    Add<br class="hidden-lg hidden-md hidden-sm" />Content
+                    <div class="l-node">3</div>
+                </div>
+                <div class="l-step l-incomplete" id="wstep-4">
+                    Create<br class="hidden-lg hidden-md hidden-sm" />Account
+                    <div class="l-node">4</div>
+                </div>
+            </div>
+        </div>
+        <!-- / New trial wizard EN -->
+    </div>
+
+    <!-- Add company step-1 ST -->
+    <div class="info-container " id="step1">
+        <div class="l-sub-tlt-panel">
+            <h2 class="l-sub-tlt pull-left">Company Information</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <form role="form" class="form-horizontal l-new-trial-form" name="company-info">
+                    <div class="form-group l-cname">
+                        <label class="col-sm-4 col-xs-12 control-label" for="searchCompany">Name:</label>
+                        <div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12" id="searchCompanyfield">
+                            <input type="text" maxlength="40" name="" id="searchCompany" autocomplete="off" placeholder="Type Company Name Here" class="form-control" value="{{selectedCompany}}" (keyup)="findCompany($event.target.value)">
+                            <div class="btn-action" aria-expanded="false">
+                                <i class="zmdi zmdi-chevron-down" aria-hidden="true" id="openCompanySearch"></i>
+                                <i class="zmdi zmdi-close hide" aria-hidden="true" id="closeCompanySearch"></i>
+                            </div>
+                            <span class="text-danger hide">Error message</span>
+
+                            <ul class="dropdown-menu dropdown">
+                                <ul  tabindex="0" class="l-auto-list" id="selectAutoCompany">
+                                    <li tabindex="{{index+1}}" (keypress)="showCompanyList($event)" class="companylist-dropdown" role="option" *ngFor="#list of companylist, #index=index">
+                                       <span (click)="showCompanyList($event)">{{list}}</span>
+                                    </li>
+                                </ul>
+                                <ul class="l-fixed-link">
+                                    <li role="separator" class="divider"></li>
+                                    <li role="option" class="l-fixed-link" id="addCompany" data-toggle="modal" data-target="#newAccount">
+                                        <span class="" (click)="resetData()"><i class="zmdi zmdi-plus"></i> Add New Company</span>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="Industry" *ngIf="companydataView">
+                        <label class="col-sm-4 col-xs-12 control-label" for="Industry">Industry:</label>
+                        <div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12">
+                            <div id="industryType" class="form-control l-dd-field" title="{{selectedCompanyType}}">
+                                {{selectedCompanyType}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="IndustrySize" *ngIf="companydataView">
+                        <label class="col-sm-4 col-xs-12 control-label" for="iSize">Size:</label>
+                        <div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12">
+                            <div id="iSize" class="form-control l-dd-field" >
+                                <span class="">{{employeerange}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-taccount-action col-md-12 text-center">
+                        <button name="submit" class="btn btn-primary" type="button" id="addContacts" disabled>
+                            Next: Add Contacts
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Add company EN -->
+
+    <!-- Add contact step-2 ST -->
+    <div class="info-container" id="step2" style="display:none;">
+        <div class="l-sub-tlt-panel">
+            <h2 class="l-sub-tlt pull-left">Company Contacts</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <form role="form" class="form-group form-horizontal l-new-trial-form" name="company-info">
+                    <div id="myForm" class="l-contact-panel">
+
+                    </div>
+                    <div class="form-group l-line">
+                        <div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12">
+                            <a class="btn btn-link disabled" id="addanotherContact" (click)="addForm()" title="Add Another Contact" href="javascript:void(0);">Add Another Contact</a>
+                         </div>
+                     </div>
+
+                     <div class="l-taccount-action col-md-12 text-center">
+                         <button name="submit" class="btn btn-primary" type="button" id="addContent" (click)="addContent()" disabled>
+                             Next: Add Content
+                         </button>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+     <!-- Add contacts step-2 EN -->
+
+    <!-- Add content step-3 ST -->
+    <div class="info-container" id="step3" style="display:none;">
+        <div class="l-sub-tlt-panel">
+            <h2 class="l-sub-tlt pull-left">Share Content with Trial users</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="l-recommend">
+                    Select the content you want to recommend to <span class="l-acc-name">{{trialUsersNames}}</span>.
+                </div>
+
+                <div class="l-select-courses">
+                    <button class="btn l-tertiary pull-right" title="Coming Soon!" data-toggle="modal" data-target="#selectCourse" disabled>
+                        Select Individual Courses
+                    </button>
+                </div>
+
+                <!-- LRN Starter Kit card ST -->
+                <div class="l-play-list-wrapper item" style="display:none">
+                    <div class="input-md l-checkbox">
+                        <input type="checkbox" class="checked-item" name="" id="chechk1">
+                        <label class="f-label" for="" id=""></label>
+                    </div>
+                    <div class="l-play-list-card">
+                        <div class="l-play-list-header">LRN Starter Kit <span class="l-course-count">700</span></div>
+                        <!-- Play list carousel ST -->
+                        <div class="col-md-12 col-lg-12 owl-carousel owl-theme" id="lrnStarterKitList">
+                            <div class="owl-item item">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <a href="#CourseDetailPage" title="Course Detail Page">
+                                            <h4 class="group inner list-group-item-heading l-list-md-heading">
+						<span class="underline">
+							Anti-Corruption &amp; Bribery
+						</span>
+                                            </h4>
+                                            <div class="l-course-details">
+                                                <div class="l-course-content">
+                                                    <div class="l-course-sub-tlt">DEF301</div>  <span class="l-sx-hide">|</span>  Government Contracting &amp; Relationships
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="l-thumb-img-wrap">
+                                        <div class="label-new-holds">
+                                            <span class="label label-warning pull-right">Updated!</span>
+                                        </div>
+                                        <a href="#Play Video" title="" class="l-video-play">
+                                            <!-- Play video -->
+                                            <div class="l-play-button">
+							<span class="l-valign">
+								<i class="zmdi zmdi-eye" aria-hidden="true"></i>
+							</span>
+                                            </div>
+                                            <!-- / Play video -->
+                                            <img class="group list-group-image" src="public/images/media-3.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item item">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <a href="#CourseDetailPage" title="Course Detail Page">
+                                            <h4 class="group inner list-group-item-heading l-list-md-heading">
+						<span class="underline">
+							Government Contracts: An Overview
+						</span>
+                                            </h4>
+                                            <div class="l-course-details">
+                                                <div class="l-course-content">
+                                                    <div class="l-course-sub-tlt">DEF301</div>  <span class="l-sx-hide">|</span>  Government Contracting &amp; Relationships
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="l-thumb-img-wrap">
+                                        <div class="label-new-holds">
+                                            <span class="label label-warning pull-right">Updated!</span>
+                                        </div>
+                                        <a href="#Play Video" title="" class="l-video-play">
+                                            <!-- Play video -->
+                                            <div class="l-play-button">
+							<span class="l-valign">
+								<i class="zmdi zmdi-eye" aria-hidden="true"></i>
+							</span>
+                                            </div>
+                                            <!-- / Play video -->
+                                            <img class="group list-group-image" src="public/images/media-4.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item item">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <a href="#CourseDetailPage" title="Course Detail Page">
+                                            <h4 class="group inner list-group-item-heading l-list-md-heading">
+						<span class="underline">
+							Intellectual Property: Overview
+						</span>
+                                            </h4>
+                                            <div class="l-course-details">
+                                                <div class="l-course-content">
+                                                    <div class="l-course-sub-tlt">DEF301</div>  <span class="l-sx-hide">|</span>  Government Contracting &amp; Relationships
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="l-thumb-img-wrap">
+                                        <div class="label-new-holds">
+                                            <span class="label label-warning pull-right">Updated!</span>
+                                        </div>
+                                        <a href="#Play Video" title="" class="l-video-play">
+                                            <!-- Play video -->
+                                            <div class="l-play-button">
+							<span class="l-valign">
+								<i class="zmdi zmdi-eye" aria-hidden="true"></i>
+							</span>
+                                            </div>
+                                            <!-- / Play video -->
+                                            <img class="group list-group-image" src="public/images/media-3.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item item">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <a href="#CourseDetailPage" title="Course Detail Page">
+                                            <h4 class="group inner list-group-item-heading l-list-md-heading">
+						<span class="underline">
+							Anti-Corruption &amp; Bribery
+						</span>
+                                            </h4>
+                                            <div class="l-course-details">
+                                                <div class="l-course-content">
+                                                    <div class="l-course-sub-tlt">DEF301</div>  <span class="l-sx-hide">|</span>  Government Contracting &amp; Relationships
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="l-thumb-img-wrap">
+                                        <div class="label-new-holds">
+                                            <span class="label label-warning pull-right">Updated!</span>
+                                        </div>
+                                        <a href="#Play Video" title="" class="l-video-play">
+                                            <!-- Play video -->
+                                            <div class="l-play-button">
+							<span class="l-valign">
+								<i class="zmdi zmdi-eye" aria-hidden="true"></i>
+							</span>
+                                            </div>
+                                            <!-- / Play video -->
+                                            <img class="group list-group-image" src="public/images/media-3.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item item">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <a href="#CourseDetailPage" title="Course Detail Page">
+                                            <h4 class="group inner list-group-item-heading l-list-md-heading">
+						<span class="underline">
+							Anti-Corruption &amp; Bribery
+						</span>
+                                            </h4>
+                                            <div class="l-course-details">
+                                                <div class="l-course-content">
+                                                    <div class="l-course-sub-tlt">DEF301</div>  <span class="l-sx-hide">|</span>  Government Contracting &amp; Relationships
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="l-thumb-img-wrap">
+                                        <div class="label-new-holds">
+                                            <span class="label label-warning pull-right">Updated!</span>
+                                        </div>
+                                        <a href="#Play Video" title="" class="l-video-play">
+                                            <!-- Play video -->
+                                            <div class="l-play-button">
+							<span class="l-valign">
+								<i class="zmdi zmdi-eye" aria-hidden="true"></i>
+							</span>
+                                            </div>
+                                            <!-- / Play video -->
+                                            <img class="group list-group-image" src="public/images/media-3.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item item">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <a href="#CourseDetailPage" title="Course Detail Page">
+                                            <h4 class="group inner list-group-item-heading l-list-md-heading">
+						<span class="underline">
+							Anti-Corruption &amp; Bribery
+						</span>
+                                            </h4>
+                                            <div class="l-course-details">
+                                                <div class="l-course-content">
+                                                    <div class="l-course-sub-tlt">DEF301</div>  <span class="l-sx-hide">|</span>  Government Contracting &amp; Relationships
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="l-thumb-img-wrap">
+                                        <div class="label-new-holds">
+                                            <span class="label label-warning pull-right">Updated!</span>
+                                        </div>
+                                        <a href="#Play Video" title="" class="l-video-play">
+                                            <!-- Play video -->
+                                            <div class="l-play-button">
+							<span class="l-valign">
+								<i class="zmdi zmdi-eye" aria-hidden="true"></i>
+							</span>
+                                            </div>
+                                            <!-- / Play video -->
+                                            <img class="group list-group-image" src="public/images/media-3.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item item">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <a href="#CourseDetailPage" title="Course Detail Page">
+                                            <h4 class="group inner list-group-item-heading l-list-md-heading">
+						<span class="underline">
+							Anti-Corruption &amp; Bribery
+						</span>
+                                            </h4>
+                                            <div class="l-course-details">
+                                                <div class="l-course-content">
+                                                    <div class="l-course-sub-tlt">DEF301</div>  <span class="l-sx-hide">|</span>  Government Contracting &amp; Relationships
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="l-thumb-img-wrap">
+                                        <div class="label-new-holds">
+                                            <span class="label label-warning pull-right">Updated!</span>
+                                        </div>
+                                        <a href="#Play Video" title="" class="l-video-play">
+                                            <!-- Play video -->
+                                            <div class="l-play-button">
+							<span class="l-valign">
+								<i class="zmdi zmdi-eye" aria-hidden="true"></i>
+							</span>
+                                            </div>
+                                            <!-- / Play video -->
+                                            <img class="group list-group-image" src="public/images/media-3.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item item">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <a href="#CourseDetailPage" title="Course Detail Page">
+                                            <h4 class="group inner list-group-item-heading l-list-md-heading">
+						<span class="underline">
+							Anti-Corruption &amp; Bribery
+						</span>
+                                            </h4>
+                                            <div class="l-course-details">
+                                                <div class="l-course-content">
+                                                    <div class="l-course-sub-tlt">DEF301</div>  <span class="l-sx-hide">|</span>  Government Contracting &amp; Relationships
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="l-thumb-img-wrap">
+                                        <div class="label-new-holds">
+                                            <span class="label label-warning pull-right">Updated!</span>
+                                        </div>
+                                        <a href="#Play Video" title="" class="l-video-play">
+                                            <!-- Play video -->
+                                            <div class="l-play-button">
+							<span class="l-valign">
+								<i class="zmdi zmdi-eye" aria-hidden="true"></i>
+							</span>
+                                            </div>
+                                            <!-- / Play video -->
+                                            <img class="group list-group-image" src="public/images/media-3.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- LRN Starter Kit card EN -->
+
+                <!-- LRN Play list card ST -->
+                <div class="l-play-list-wrapper item l-mt-30">
+                    <div class="input-md l-checkbox">
+                        <input type="checkbox" class="checked-item" name="" id="chechk1">
+                        <label class="f-label" for="" id=""></label>
+                    </div>
+                    <div class="l-play-list-card">
+                        <div class="l-play-list-header">LRN Starter Kit<span class="l-course-count">{{totaltopLRNPlaylist}} Courses</span></div>
+                        <!-- Play list carousel ST -->
+                        <div class="col-md-12 col-lg-12 owl-carousel owl-theme" id="topLrnPlaylist">
+                            <!-- ////////////////////////////////// -->
+                            <div class="owl-item item" *ngFor="#list of topLRNPlaylist,#index=index">
+                                <div class="thumbnail">
+                                    <div class="caption">
+										<h4 class="group inner list-group-item-heading l-list-md-heading">
+										<span class="underline">
+											{{topLRNPlaylist[index].title}}
+										</span>
+										</h4>
+										<div class="l-course-details">
+											<div class="l-course-content">
+												<div class="l-course-sub-tlt">{{topLRNPlaylist[index].base_catalog_id}}</div>  <span class="l-sx-hide">|</span>  {{topLRNPlaylist[index].main_topic}}
+											</div>
+										</div>
+                                    </div>
+                                    <div class="l-thumb-img-wrap">
+                                        <div class="label-new-holds">
+                                            <span class="label label-warning pull-right">Updated!</span>
+                                        </div>
+                                        <a href="javascript:void(0);" (click)='coursePlayHndler(topLRNPlaylist[index], topLRNPlaylist[index].system_id)' title="" class="l-video-play">
+                                            <!-- Play video -->
+                                            <div class="l-play-button">
+                                                <span class="l-valign">
+                                                    <i class="zmdi zmdi-eye" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                            <!-- / Play video -->
+											<img class="group list-group-image"  src="https://portal.dev.lrn.com/course-images/{{topLRNPlaylist[index].catalog_id}}.jpg" alt="Course Image"  onerror="javascript:this.src='https://portal.dev.lrn.com/course-images/image-notfound-blue.jpg'" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ////////////////////////  -->
+                        </div>
+                    </div>
+                </div>
+                <!-- LRN Play list card EN -->
+
+                <div class="l-taccount-action col-md-12 text-center l-mt-30">
+                    <button name="submit" class="btn btn-secondary l-mr-25" type="button" id="skipAccount" (click)="createAccount(false)">
+                        Skip this step
+                    </button>
+                    <button name="submit" class="btn btn-primary" type="button" id="createAccount" (click)="createAccount(true)" disabled>
+                        Next: Create Account(s)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add content step-3 EN -->
+
+    <!-- Create Account step-4 ST -->
+    <div class="info-container" id="step4" style="display:none;">
+        <div class="l-sub-tlt-panel">
+            <h2 class="l-sub-tlt pull-left">Account Details</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <form role="form" class="form-group form-horizontal l-new-trial-form" name="company-info">
+
+                    <div class="form-group l-account-duration">
+                        <label class="col-sm-12 col-xs-12 control-label" for="Account:">Account Duration:</label>
+                        <div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12" id="accDuration">
+                            <div id="accDuration-field" class="form-control l-dd-field" data-toggle="dropdown">
+                                15 day trial account
+                            </div>
+                            <div class="btn-action" data-toggle="dropdown">
+                                <i class="zmdi zmdi-chevron-down" aria-hidden="true"></i>
+                            </div>
+                            <ul class="dropdown-menu dropdown">
+                                <li role="option">
+                                    <span class="" (click)="setTrailPeriod(15)">15 day trial account</span>
+                                </li>
+                                <li role="option">
+                                    <span class="" (click)="setTrailPeriod(30)">30 day trial account</span>
+                                </li>
+                                <li role="option">
+                                    <span class="" (click)="setTrailPeriod(60)">60 day trial account</span>
+                                </li>
+                                <li role="option">
+                                    <span class="" (click)="setTrailPeriod(90)">90 day trial account</span>
+                                </li>
+                                <li role="option">
+                                    <span class="" (click)="setTrailPeriod(180)">180 day trial account</span>
+                                </li>
+                                <li role="option">
+                                    <span class="" (click)="setTrailPeriod('unlimited')">Unlimited</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+					<div  class="col-sm-12 col-xs-12">
+						<ul class="l-notify-link login-link">
+							<li class="item">
+								<div class="input-md">
+									<input type="checkbox" class="checked-item" name="" id="emailme"  value="1" >
+									<label class="f-label">Send the email(s) to me only</label>
+								</div>
+							</li>
+						</ul>
+					</div>
+                    <div class="form-group l-welcome-wrapper">
+                        <div class="col-sm-12 col-xs-12 control-label">
+                            <span class="l-welcome-head">Welcome Message:</span>
+                            <button class="btn l-tertiary pull-right" type="button" title="Restore Default" id="restoreDefaultDemo">
+                                Restore Default
+                            </button>
+                        </div>
+                        <div  class="col-sm-12 col-xs-12">
+                            <ckeditor id="ckeditor-con"></ckeditor>
+                        </div>
+                    </div>
+
+                    <div class="l-taccount-action col-md-12 text-center">
+                        <button name="submit" id='createTrialAccount' class="btn btn-primary" type="button" (click)="submitForm()">
+                            Create Trial Account
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- Create Account step-4 EN -->
+
+
+<!-- /container -->
+
+
+<!-- Create New account modal ST -->
+<div id="newAccount" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<i class="zmdi zmdi-close" aria-hidden="true"></i>
+				</button>
+				<h3 class="modal-title">Create New Company</h3>
+			</div>
+			<div class="modal-body">
+				<div class="l-sub-tlt-panel">
+					<div class="l-form-head">Company Information</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 col-xs-12">
+						<form role="form" class="form-group form-horizontal l-new-trial-form" name="company-info">
+							<div class="form-group">
+								<label class="col-sm-4 col-xs-12 control-label" for="searchCompany">Name:<i class="zmdi zmdi-star"></i></label>
+								<div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12" id="NewCompanyfield">
+									<input type="text" maxlength="40" name="" id="NewCompany" autocomplete="off" placeholder="Company Name" class="form-control" value="" (input)="onInput($event)">
+									<div class="btn-action hide" aria-haspopup="true" aria-expanded="false">
+										<i class="zmdi zmdi-chevron-down" aria-hidden="true"></i>
+										<i class="zmdi zmdi-close hide" aria-hidden="true" id="closeCompanySearch"></i>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-4 col-xs-12 control-label" for="Industry">Industry:<i class="zmdi zmdi-star"></i></label>
+								<div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12" id="m-IndustryType">
+									<div id="m-IndustryType-field" class="form-control l-dd-field" data-toggle="dropdown">
+									   {{selectedIndustry}}
+									</div>
+									<div class="btn-action" data-toggle="dropdown">
+										<i class="zmdi zmdi-chevron-down" aria-hidden="true"></i>
+									</div>
+
+									<ul class="dropdown-menu dropdown">
+										<li role="option" *ngFor="#list of industries">
+											<span class="" (click)="selectIndustry($event)">{{list}}</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-4 col-xs-12 control-label" for="Industry">Size:<i class="zmdi zmdi-star"></i></label>
+								<div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12" id="m-industrySize">
+									<input type="number" maxlength="8" min="1" max="99999999" name="" id="company-size" autocomplete="off" placeholder="Company Size In Numbers" class="form-control" (input)="onInput($event)">
+									<span class="text-danger" *ngIf="showerror">{{errorMessage}}</span>
+								</div>
+							</div>
+
+							<div class="l-taccount-action col-md-12 text-right">
+								<button name="submit" class="btn l-tertiary l-mr-25" type="button" data-dismiss="modal">
+									Cancel
+								</button>
+								<button name="submit" class="btn btn-primary" type="button" (click)="addCompany()">
+									Create New Company
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Create New account modal EN -->
+
+    <!-- Trial account Error modal ST -->
+    <div id="newAccountError" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Editing The Welcome Message?</h3>
+                </div>
+                <div class="modal-body pt-0">
+                    <div class="l-acreated-msg l-about-course-panel">
+                        <p>When editing the message, use the following tags to personalize your message further: </p>
+                        <p innerHTML="{{placeholderNames}}"></p>
+                        <p><strong>Top tip: </strong>If you customize the message, we recommend you send the email to yourself first to review your changes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Trial account Error modal EN -->
+
+<!-- Trial account created modal ST -->
+<div id="newAccountCreated" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Congratulations!</h3>
+        </div>
+        <div class="modal-body pt-0">
+            <div class="l-acreated-msg">
+                Trial Account(s) have been created for <strong>{{trialUsersNames}}</strong> at <strong>{{selectedCompany}}</strong>.
+                <br>
+                <div class="l-acreated-expire"><strong>{{accountDurationNote}}</strong>.</div>
+            </div>
+            <div class="row">
+                <div class="l-taccount-created col-md-12 text-center">
+                    <button name="submit" class="btn btn-secondary l-mr-25" data-dismiss="modal" (click)="openProspectAndPartnersPage()">
+                        Go To Prospects & Partners
+                    </button>
+                     <button name="submit" title="View Profile" class="btn btn-primary" type="button" data-dismiss="modal" (click)="openCompanyProfilePage()">
+                        View {{selectedCompany}} Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- Trial account created modal EN -->
+
+<!-- Select Individual course modal ST -->
+<div id="selectCourse" class="modal fade" role="dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+                <i class="zmdi zmdi-close" aria-hidden="true"></i>
+            </button>
+            <h3 class="modal-title">Share Courses</h3>
+        </div>
+        <div class="modal-body pt-0">
+           <!-- Featureed Courses -->
+	<div class="l-cc-menu-wrapper" id="sub-tab-container">
+	<!-- Catalog Menu toggle -->
+	<div class="l-course-catalogue-menu hidden-xs" id="md-cc-menu" role="listbox">
+		<div class="l-list-header">Library Menu <i class="zmdi zmdi-menu-down" aria-hidden="true"></i>
+		</div>
+	</div>
+	<!-- Catalog Small device drop down toggle menu -->
+	<div class="l-all-courses-dd" id="xs-cc-menu">
+	<div class="form-inline l-search-courses" name="list-courses">
+		<div class="table-search">
+			<div class="input-group" id="allCourses">
+				<div id="allCoursesTxt" class="form-control all-courses-field">
+				All Courses
+				</div>
+				<div class="input-group-btn" data-toggle="dropdown">
+					<button type="submit" class="btn btn-default l-radius0">
+						<i class="zmdi zmdi-chevron-down pull-right"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<!-- /Catalogue Small device drop down toggle menu -->
+	<!-- /Catalogue Menu toggle -->
+	<!-- All courses -->
+	<div class="l-all-courses" id="l-all-courses">
+	<div class="l-featured-courses" style="display:none;">
+		<div class="l-list-header">Featured Courses</div>
+		<div class="row l-mb-0">
+			<span class="col-xs-12 col-sm-6 col-md-3"><a href="javascript:;" title="Top LRN Courses">Top LRN Courses</a></span>
+			<span class="col-xs-12 col-sm-6 col-md-3"><a href="javascript:;" title="Recently Added">Recently Added</a></span>
+			<span class="col-xs-12 col-sm-6 col-md-3"><a href="javascript:;" title="Recently Updated">Recently Updatd</a></span>
+		</div>
+	</div>
+	<div class="l-featured-courses l-topics-list" style="display:none;">
+		<div class="l-list-header">Topics</div>
+		<div class="row">
+          <div class="col-sm-6">
+            <div class="row">
+				<div class="col-md-6">
+					<span><a href="javascript:;" title="Anti-Corruption &amp; Bribery">Anti-Corruption &amp; Bribery</a></span>
+					<span><a href="javascript:;" title="Anti-Money Laundering">Anti-Money Laundering</a>
+					</span>
+					<span><a href="javascript:;" title="Competition">Competition</a></span>
+					<span><a href="javascript:;" title="Conflicts Of Interest">Conflicts Of Interest</a>
+					</span>
+					<span><a href="javascript:;" title="Corporate Governance">Corporate Governance</a>	</span>
+				</div>
+				<div class="col-md-6">
+					<span><a href="javascript:;" title="CSR">CSR</a></span>
+					<span><a href="javascript:;" title="E&amp;C Program Management">E&amp;C Program Management</a></span>
+					<span><a href="javascript:;" title="Education">Education</a></span>
+					<span><a href="javascript:;" title="Employment">Employment</a></span>
+					<span><a href="javascript:;" title="Gifts &amp; Entertainment">Gifts &amp; Entertainment</a></span>
+				</div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+				<div class="col-md-6">
+					<span><a href="javascript:;" title="Government Contracting &amp; Relationships">Government Contracting &amp; Relationships</a>
+					</span>
+					<span><a href="javascript:;" title="How">How</a></span>
+					<span><a href="javascript:;" title="Industries">Industries</a></span>
+					<span><a href="javascript:;" title="Privacy &amp; Date Protection">Privacy &amp; Date Protection</a></span>
+					<span><a href="javascript:;" title="Records Management">Records Management</a></span>
+				</div>
+				<div class="col-md-6">
+					<span><a href="javascript:;" title="Reporting &amp; Investigation">Reporting &amp; Investigation</a></span>
+					<span><a href="javascript:;" title="Securities &amp; Insider Trading">Securities &amp; Insider Trading</a></span>
+					<span><a href="javascript:;" title="Social Media">Social Media</a></span>
+					<span><a href="javascript:;" title="Supply Chain">Supply Chain</a></span>
+					<span><a href="javascript:;" title="Trade Controls">Trade Controls</a></span>
+				</div>
+            </div>
+          </div>
+        </div>
+	</div>
+	</div>
+	<!-- /All courses -->
+	<div class="l-toggle-arrow hidden-xs">
+		<span class="l-arrow-circle"><i class="zmdi zmdi-chevron-down"></i></span>
+	</div>
+	</div>
+	<!-- / Featureed Courses -->
+
+
+	<div class="l-xs-filter-sort text-center">
+    	<a href="javascript:;" title="Filter" class="btn l-tertiary" id="filterTab">
+		Filter
+		</a>
+		<a href="javascript:;" title="Sort" class="btn l-tertiary" id="sortTab">Sort by</a>
+    </div>
+
+	<div class="row l-course-list-wrap">
+    	<div class="col-md-12">
+        	<!-- Browse By Subtopic Panel ST -->
+        	<div class="l-sub-topic-panel" id="subtopicPanel" style="display:none;">
+            	<h4>BROWSE BY SUBTOPIC</h4>
+            	<ul>
+                	<li>
+					<a href="javascript:void(0);" title="All subtopics">All subtopics</a>
+					<span class="l-course-count">72</span>
+					</li>
+                    <li>
+						<a href="javascript:void(0);" title="Ethical Performance">Ethical Performance</a>
+						<span class="l-course-count">22</span>
+					</li>
+                    <li><a href="javascript:void(0);" title="FAR">FAR</a><span class="l-course-count">20</span></li>
+                    <li><a href="javascript:void(0);" title="General">General</a><span class="l-course-count">10</span></li>
+                    <li><a href="javascript:void(0);" title="Lobbying">Lobbying</a><span class="l-course-count">20</span></li>
+                </ul>
+            </div>
+            <!-- Browse By Subtopic Panel EN -->
+
+            <!-- Filter Panel ST -->
+        	<div class="l-filter-panel l-filter-close" id="filterPanel">
+            	<div class="row">
+                	<div class="col-md-12">
+						<div id="CloseFilter" class="l-filter-close-arrow l-pointer">
+							<i class="zmdi zmdi-chevron-left"></i>
+						</div>
+            			<h4 class="pull-left">
+							FILTER COURSES
+						</h4>
+                        <a id="filteringDone" class="btn btn-default l-clear-btn pull-right" title="Done">Done</a>
+                        <a id="clearAll" class="btn btn-default l-clear-btn pull-right" title="Clear All">Clear All</a>
+                    </div>
+                </div>
+                <div class="row l-filter-labels l-filter-mobile visible-xs">
+                    <div class="col-md-12">
+                        <span class="l-btn-filter">
+                            Foundational Course <span class="l-close-filter"><i class="zmdi zmdi-close"></i></span>
+                        </span>
+                        <span class="l-btn-filter">
+                            Refresher Course <span class="l-close-filter"><i class="zmdi zmdi-close"></i></span>
+                        </span>
+                        <button class="l-clear-all">Clear All</button>
+                    </div>
+                </div>
+                <ul>
+                    <li>
+					<a href="javascript:void(0);" title="Course Type">
+					Course Type <i class="zmdi zmdi-plus"></i>
+					</a>
+                        <div class="l-filter-options l-close-panel">
+                        	<ul class="l-filter-list l-filter-checkbox-list">
+                           		<li>
+                                	<label for="check1">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check1">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                        Vignette
+										<span class="pull-right">30</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check2">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check2">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Foundational Course
+										<span class="pull-right">60</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check3">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check3">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Refresher Course
+										<span class="pull-right">23</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check4">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check4">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Game
+										<span class="pull-right">54</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check5">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check5">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Experimental Learning
+										<span class="pull-right">35</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+						<a href="javascript:void(0);" title="Language">
+						Language <i class="zmdi zmdi-plus"></i>
+						</a>
+                    	<div class="l-filter-options l-close-panel">
+                        	<ul class="l-filter-list l-filter-checkbox-list">
+                           		<li>
+                                	<label for="check6">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check6">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                        English
+										<span class="pull-right">30</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check7">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check7">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Chinese (SM)
+										<span class="pull-right">60</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check8">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check8">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Dutch
+										<span class="pull-right">23</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check9">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check9">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Finnish SPN (LT)
+										<span class="pull-right">54</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check10">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check10">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	French (CA)
+										<span class="pull-right">35</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check11">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check11">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	French (EU)
+										<span class="pull-right">20</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check12">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check12">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Fermon
+										<span class="pull-right">13</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check13">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check13">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Hebrew
+										<span class="pull-right">50</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check14">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check14">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Italian
+										<span class="pull-right">60</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check15">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check15">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Japanese
+										<span class="pull-right">40</span>
+                                    </label>
+                                </li>
+                                 <li>
+                                	<label for="check16">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check16">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Korean
+										<span class="pull-right">35</span>
+                                    </label>
+                                </li>
+                                 <li>
+                                	<label for="check17">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check17">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Polish
+										<span class="pull-right">20</span>
+                                    </label>
+                                </li>
+                                 <li>
+                                	<label for="check18">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check18">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Russion
+										<span class="pull-right">30</span>
+                                    </label>
+                                </li>
+                                 <li>
+                                	<label for="check19">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check19">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Spain (EU)
+										<span class="pull-right">20</span>
+                                    </label>
+                                </li>
+                                 <li>
+                                	<label for="check20">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check20">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Swedish
+										<span class="pull-right">10</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check21">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check21">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Turkish
+										<span class="pull-right">15</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+					<!-- Format -->
+                    <li><a href="javascript:void(0);" title="Format">Format <i class="zmdi zmdi-plus"></i></a>
+                    	<div class="l-filter-options l-close-panel">
+						<div class="panel-body">
+                        	<div class="l-format-txt">Courses displayed are HTML, mobile compatible.</div>
+							<div class="l-switch-srapper">
+							<label class="l-switch">
+								<input type="checkbox" checked="">
+								<div class="l-slider l-round"></div>
+							</label>
+							<span class="">Include legacy formats</span>
+							</div>
+						</div>
+                        </div>
+                    </li>
+					<!-- /Format -->
+					<!-- Audio/Video -->
+                    <li>
+						<a href="javascript:void(0);" title="Audio/Video">
+							Audio/Video <i class="zmdi zmdi-plus"></i>
+						</a>
+                    	<div class="l-filter-options l-close-panel">
+						<div class="panel-body">
+                        	<ul class="l-filter-list l-filter-checkbox-list">
+                           		<li>
+                                	<label for="check22">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check22">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                        <i class="zmdi zmdi-volume-up"></i>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check23">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check23">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	<i class="zmdi zmdi-videocam"></i>
+                                    </label>
+                                </li>
+                            </ul>
+						</div>
+                        </div>
+                    </li>
+					<!-- /Audio/Video -->
+					<!-- Duration -->
+                    <li>
+						<a href="javascript:void(0);" title="Duration">
+							Duration <i class="zmdi zmdi-plus"></i>
+						</a>
+                    	<div class="l-filter-options l-close-panel">
+                        	<div class="panel-body">
+                        	<ul class="l-filter-list l-filter-checkbox-list">
+                           		<li>
+                                	<label for="check24">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check24">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                        &lt; 5 Minutes 30 <span class="pull-right">30</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check25">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check25">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	10-20 Minutes <span class="pull-right">60</span>
+                                    </label>
+                                </li>
+								<li>
+                                	<label for="check26">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check26">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	21-30 Minutes <span class="pull-right">23</span>
+                                    </label>
+                                </li>
+								<li>
+                                	<label for="check27">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check27">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	&gt; 30 Minutes <span class="pull-right">54</span>
+                                    </label>
+                                </li>
+                            </ul>
+						</div>
+                    </div>
+                    </li>
+					<!-- /Duration -->
+					<!-- Release Date -->
+                    <li>
+					<a href="javascript:void(0);" title="Release Date">
+					Release Date <i class="zmdi zmdi-plus"></i>
+					</a>
+                    	<div class="l-filter-options l-close-panel">
+						<div class="panel-body">
+                        	<div class="l-release-date">
+								<span>From: </span>
+								<input type="text" name="fromDate" id="" autocomplete="off" placeholder="mm/dd/yyyy" class="form-control l-radius0 l-date-txtbox">
+								<span class="hide">Tue, Mar 01 2016</span>
+								<i class="zmdi zmdi-calendar"></i>
+							</div>
+							<div class="l-release-date">
+								<span>To: </span>
+								<input type="text" name="" id="toDate" autocomplete="off" placeholder="mm/dd/yyyy" class="form-control l-radius0 l-date-txtbox">
+								<span class="hide">Tue, Mar 06 2016</span>
+								<i class="zmdi zmdi-calendar"></i>
+							</div>
+						</div>
+                        </div>
+                    </li>
+					<!-- /Release Date -->
+					<!-- Industry -->
+                    <li>
+						<a href="javascript:void(0);" title="Industry">
+						Industry <i class="zmdi zmdi-plus"></i>
+						</a>
+                    	<div class="l-filter-options l-close-panel">
+                        	<div class="panel-body">
+                        	<ul class="l-filter-list l-filter-checkbox-list">
+                           		<li>
+                                	<label for="check28">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check28">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                        Accommondation &amp; Food Services <span class="pull-right">30</span>
+                                    </label>
+                                </li>
+                                <li>
+                                	<label for="check29">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check29">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Aerospace &amp; Defense <span class="pull-right">60</span>
+                                    </label>
+                                </li>
+								<li>
+                                	<label for="check30">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check30">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Agriculture &amp; Forestry <span class="pull-right">23</span>
+                                    </label>
+                                </li>
+								<li>
+                                	<label for="check31">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check31">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Chemicals <span class="pull-right">54</span>
+                                    </label>
+                                </li>
+								<li>
+                                	<label for="check32">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check32">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Communications, Information &amp; Technology <span class="pull-right">34</span>
+                                    </label>
+                                </li>
+								<li>
+                                	<label for="check33">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check33">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Construction <span class="pull-right">15</span>
+                                    </label>
+                                </li>
+								<li>
+                                	<label for="check34">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check34">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Energy, Utilities &amp; Mining <span class="pull-right">14</span>
+                                    </label>
+                                </li>
+								<li>
+                                	<label for="check35">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check35">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Finance &amp; Insurance <span class="pull-right">30</span>
+                                    </label>
+                                </li>
+								<li>
+                                	<label for="check36">
+                                        <div class="input-md l-checkbox">
+                                            <input type="checkbox" class="" id="check36">
+                                            <label class="f-label" for="" id=""></label>
+                                        </div>
+                                    	Food, Beverage <span class="pull-right">60</span>
+                                    </label>
+                                </li>
+                            </ul>
+						</div>
+                        </div>
+                    </li>
+					<!-- /Industry -->
+					<!-- Region -->
+                    <li>
+					<a href="javascript:void(0);" title="Region">
+					Region <i class="zmdi zmdi-plus"></i>
+					</a>
+						<div class="l-filter-options l-close-panel">
+						<div class="panel-body">
+						<ul class="l-filter-list l-filter-checkbox-list">
+							<li>
+								<label for="check38">
+									<div class="input-md l-checkbox">
+										<input type="checkbox" class="" id="check38">
+										<label class="f-label" for="" id=""></label>
+									</div>
+									Asia <span class="pull-right">30</span>
+								</label>
+							</li>
+							<li>
+								<label for="check39">
+									<div class="input-md l-checkbox">
+										<input type="checkbox" class="" id="check39">
+										<label class="f-label" for="" id=""></label>
+									</div>
+									Australia <span class="pull-right">60</span>
+								</label>
+							</li>
+							<li>
+								<label for="check40">
+									<div class="input-md l-checkbox">
+										<input type="checkbox" class="" id="check40">
+										<label class="f-label" for="" id=""></label>
+									</div>
+									Canada <span class="pull-right">12</span>
+								</label>
+							</li>
+							<li>
+								<label for="check41">
+									<div class="input-md l-checkbox">
+										<input type="checkbox" class="" id="check41">
+										<label class="f-label" for="" id=""></label>
+									</div>
+									Europe <span class="pull-right">15</span>
+								</label>
+							</li>
+							<li>
+								<label for="check42">
+									<div class="input-md l-checkbox">
+										<input type="checkbox" class="" id="check42">
+										<label class="f-label" for="" id=""></label>
+									</div>
+									Latin America <span class="pull-right">10</span>
+								</label>
+							</li>
+							<li>
+								<label for="check43">
+									<div class="input-md l-checkbox">
+										<input type="checkbox" class="" id="check43">
+										<label class="f-label" for="" id=""></label>
+									</div>
+									North America <span class="pull-right">20</span>
+								</label>
+							</li>
+							<li>
+								<label for="check44">
+									<div class="input-md l-checkbox">
+										<input type="checkbox" class="" id="check44">
+										<label class="f-label" for="" id=""></label>
+									</div>
+									OESD Countries <span class="pull-right">35</span>
+								</label>
+							</li>
+							</ul>
+						</div>
+                        </div>
+                    </li>
+					<!-- / Region -->
+					<!-- Target Employee -->
+					<li>
+						<a href="javascript:void(0);" title="Target Employee">
+						Target Employee <i class="zmdi zmdi-plus"></i>
+						</a>
+                    	<div class="l-filter-options l-close-panel">
+                        	<div class="panel-body">
+							<ul class="l-filter-list l-filter-checkbox-list">
+								<li>
+									<label for="check45">
+										<div class="input-md l-checkbox">
+											<input type="checkbox" class="" id="check45">
+											<label class="f-label" for="" id=""></label>
+										</div>
+										Managers at all levels in public companies
+									</label>
+								</li>
+								<li>
+									<label for="check46">
+										<div class="input-md l-checkbox">
+											<input type="checkbox" class="" id="check46">
+											<label class="f-label" for="" id=""></label>
+										</div>
+										Employees
+									</label>
+								</li>
+								<li>
+									<label for="check47">
+										<div class="input-md l-checkbox">
+											<input type="checkbox" class="" id="check47">
+											<label class="f-label" for="" id=""></label>
+										</div>
+										Supervisors
+									</label>
+								</li>
+							</ul>
+							</div>
+                        </div>
+                    </li>
+					<!-- / Target Employee -->
+					<!-- Regulation Type -->
+                    <li>
+						<a href="javascript:void(0);" title="Regulation Type">
+						Regulation Type <i class="zmdi zmdi-plus"></i>
+						</a>
+                    	<div class="l-filter-options l-close-panel">
+                        	<div class="panel-body">
+							<ul class="l-filter-list l-filter-checkbox-list">
+								<li>
+									<label for="check48">
+										<div class="input-md l-checkbox">
+											<input type="checkbox" class="" id="check48">
+											<label class="f-label" for="" id=""></label>
+										</div>
+										Type - 1
+									</label>
+								</li>
+								<li>
+									<label for="check49">
+										<div class="input-md l-checkbox">
+											<input type="checkbox" class="" id="check49">
+											<label class="f-label" for="" id=""></label>
+										</div>
+										Type - 2
+									</label>
+								</li>
+								<li>
+									<label for="check50">
+										<div class="input-md l-checkbox">
+											<input type="checkbox" class="" id="check50">
+											<label class="f-label" for="" id=""></label>
+										</div>
+										Type - 3
+									</label>
+								</li>
+							</ul>
+							</div>
+                        </div>
+                    </li>
+					<!-- /Regulation Type -->
+                </ul>
+            </div>
+            <!-- Filter Panel EN -->
+        </div>
+        <!-- Library Right Panel ST -->
+        <div class="col-md-12">
+        	 <!-- Breadcrumb -->
+			<div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb" id="breadCrumb">
+                    <li class="active" id="bcAllcourses">
+                        <a href="javascript:;">All Courses</a> <span class="l-course-count">700</span>
+                    </li>
+                    <li class="" id="bcTopic" style="display:none;">
+                        <a href="javascript:;">Government Contracting &amp; Relationships</a>
+						<span class="l-course-count">10</span>
+                    </li>
+                    <li class="" id="bcsubTopic" style="display:none;">
+                        <a href="javascript:;">Ethical Performance</a> <span class="l-course-count">20</span>
+                    </li>
+                </ul>
+            </div>
+		</div>
+            <!-- filter labels -->
+            <div class="row l-filter-labels">
+                <div class="col-md-12">
+                    <span class="l-btn-filter">
+                        Foundational Course <span class="l-close-filter"><i class="zmdi zmdi-close"></i></span>
+                    </span>
+                    <span class="l-btn-filter">
+                        Refresher Course <span class="l-close-filter"><i class="zmdi zmdi-close"></i></span>
+                    </span>
+                    <button class="l-clear-all">Clear All</button>
+                </div>
+            </div>
+            <!-- /filter labels -->
+			<div class="row">
+                <div class="col-md-12 l-filter-sort">
+                    <!-- filter options -->
+                    <div class="l-filter-options">
+                            <button class="l-check-course hide" id="checkCourse">
+								<i class="zmdi zmdi-minus" aria-hidden="true"></i>
+							</button>
+							<div class="input-md l-restore-course">
+								<input type="checkbox" class="checked-item chechk-action" name="" id="chechk-action">
+								<label class="f-label" for="" id=""></label>
+							</div>
+                            <div class="l-bm-dd l-bm-btn-holds">
+                                <button class="" data-toggle="dropdown">
+                                    <i class="zmdi zmdi-chevron-down" aria-hidden="true"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown l-sort-panel">
+                                    <li>
+                                        <a href="javascript:;" class="" id="checkedAllitem">All</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" class="" id="uncheckAllitem">None</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" id="Bookmarked">Bookmarked</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" id="notBookmarked">Not Bookmarked</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="l-action-menu" id="actionMenu" style="display:none;">
+                            <button class=""><i class="zmdi zmdi-share" aria-hidden="true"></i></button>
+
+                            <div class="l-playlist-dd l-bm-dd">
+                                <button class="l-list-dd-btn" data-toggle="dropdown">
+                                <i class="zmdi zmdi-format-list-bulleted" aria-hidden="true"></i><i class="zmdi zmdi-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown">
+                                    <li>
+                                        <a href="javascript:;" class="">Prospects Starter Playlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">Playlist for Pharma</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">Some Other List</a>
+                                    </li>
+									<li class="divider"></li>
+                                    <li>
+                                        <a href="javascript:;">Create New Playlist</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button class=""><i class="zmdi zmdi-bookmark" aria-hidden="true"></i></button>
+                            <button class=""><i class="zmdi zmdi-collection-pdf" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <!-- /filter options -->
+                    <!-- Sort and Toggle list and grid view -->
+                    <div class="btn-group pull-right l-toggle-btn">
+                        <div class="pull-left">
+						<!-- Sort dd -->
+							<div class="l-sort-dd pull-left l-sort-dd-menu l-filter-close" id="sortBy">
+                            <div class="form-inline l-search-courses pull-right">
+                            <div class="l-sort-label">
+							<div id="closeSort" class="l-filter-close-arrow l-pointer">
+								<i class="zmdi zmdi-chevron-left" aria-hidden="true"></i>
+							</div>Sort by:
+							</div>
+                            <div class="table-search">
+                                <div class="input-group" id="">
+                                    <div class="l-sort-toggle" data-toggle="dropdown">
+									<div class="form-control l-radius0" id="sortCourses">
+									Topic by Last Update
+									</div>
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="zmdi zmdi-chevron-down" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                    </div>
+                                    <ul class="dropdown-menu dropdown sort-dd" id="sort-dd">
+                                        <li>
+                                            <a href="javascript:;" class="">
+											<label for="check1">
+											<div class="input-md l-sort-radio">
+												<input type="radio" class="" id="check1" name="sort">
+												<label class="f-label" for="" id=""></label>
+											</div>
+											</label>
+											<span>Topic by Last Update</span>
+											</a>
+                                        </li>
+
+										<li>
+                                            <a href="javascript:;" class="">
+											<label for="check1">
+											<div class="input-md l-sort-radio">
+												<input type="radio" class="" id="check1" name="sort">
+												<label class="f-label" for="" id=""></label>
+											</div>
+											</label>
+											<span>Most recently updated by topic</span>
+											</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="javascript:;">
+											<label for="check2">
+											<div class="input-md l-sort-radio">
+												<input type="radio" class="" id="check2" name="sort">
+												<label class="f-label" for="" id=""></label>
+											</div>
+											</label>
+											<span>Topic by A-Z courses</span>
+											</a>
+                                        </li>
+                                        <li>
+											<a href="javascript:;">
+											<label for="check3">
+											<div class="input-md l-sort-radio">
+												<input type="radio" class="" id="check3" name="sort">
+												<label class="f-label" for="" id=""></label>
+											</div>
+											</label>
+											<span>Courses, Last Updated</span>
+											</a>
+                                        </li>
+                                        <li>
+											<a href="javascript:;">
+											<label for="check4">
+											<div class="input-md l-sort-radio">
+												<input type="radio" class="" id="check4" name="sort">
+												<label class="f-label" for="" id=""></label>
+											</div>
+											</label>
+											<span>Course A-Z</span>
+											</a>
+                                        </li>
+                                        <li>
+											<a href="javascript:;">
+											<label for="check5">
+											<div class="input-md l-sort-radio">
+												<input type="radio" class="" id="check5" name="sort">
+												<label class="f-label" for="" id=""></label>
+											</div>
+											</label>
+											<span>Bookmarked</span>
+											</a>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="dropdown-menu dropdown" id="sort-dd-topic" style="display:none;">
+                                        <li>
+                                            <a href="javascript:;" class="">Last Updated</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">Course A-Z</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">Bookmarked</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+						<!-- / Sort dd -->
+                        <div class="pull-left">
+                        <a id="list" class="btn btn-sm active-btn">
+                            <i class="zmdi zmdi-view-agenda" aria-hidden="true"></i>
+                        </a>
+                        <a id="grid" class="btn btn-sm">
+                            <i class="zmdi zmdi-apps" aria-hidden="true"></i>
+                        </a>
+                        </div>
+                    </div>
+                    <!-- / Sort and Toggle list and grid view -->
+                </div>
+			</div>
+			</div>
+			<!-- / Breadcrumb -->
+
+            <div class="l-sub-tab-container">
+                <div class="info-container l-sub-tab-panel" style="display: block;">
+                    <div class="l-sub-tlt-panel">
+                        <h2 class="l-sub-tlt pull-left"> Anti-Corruption &amp; Bribery <span class="l-course-count">22</span></h2>
+                    </div>
+                    <div class="clearfix"></div>
+                 <!-- Course listing -->
+                 <div id="products" class="row list-group">
+                <div class="item col-xs-12 col-sm-6 col-md-4 col-lg-4 list-group-item">
+				<!-- list view checkbox -->
+				<div class="input-md l-checkbox">
+					<input type="checkbox" class="checked-item" name="" id="chechk1">
+					<label class="f-label" for="" id=""></label>
+				</div>
+				<!-- /list view checkbox -->
+				<div class="thumbnail" >
+                            <a href="#CourseDetailPage" title="Course Detail Page" class="l-list-sx-heading">
+                                <h4 class="group inner list-group-item-heading">
+                                    <span class="underline">
+                                        Government Contract: Overview
+                                    </span>
+                                </h4>
+								<div class="l-course-sub-tlt">DEF301</div> <span>&nbsp;|&nbsp;</span> Government Contracting & Relationships
+                            </a>
+                            <div class="l-thumb-img-wrap">
+                                <!-- More info menu -->
+                                <div class="l-more-info-menu" id="test">
+                                    <span class="" data-toggle="dropdown">
+                                        <i class="zmdi zmdi-more-vert" aria-hidden="true"></i>
+                                    </span>
+                                    <ul class="dropdown-menu dropdown">
+                                        <li>
+                                            <a href="javascript:;" title="Share Course">
+                                            <i class="zmdi zmdi-share" aria-hidden="true"></i> Share Course
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" title="Add to Playlist">
+												<i class="zmdi zmdi-format-list-bulleted" aria-hidden="true"></i> Add to Playlist
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" title="Export to PDF">
+                                            <i class="zmdi zmdi-collection-pdf" aria-hidden="true"></i> Export to PDF
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li class="text-left">
+											<a href="javascript:;" title="Preview Course">
+											<i class="zmdi zmdi-eye" aria-hidden="true"></i> Preview Course
+											</a>
+										</li>
+										<li class="text-left">
+											<a href="javascript:;" title="View Course Details">
+											<i class="zmdi zmdi-more" aria-hidden="true"></i> View Course Details
+											</a>
+										</li>
+                                    </ul>
+                                </div>
+                                <!-- / More info menu -->
+                                <a href="#Play Video" title="" class="l-video-play">
+                                    <!-- Play video -->
+                                    <div class="l-play-button">
+                                        <span class="l-valign">
+											<i class="zmdi zmdi-eye" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <!-- / Play video -->
+                                    <img class="group list-group-image" src="public/images/media-4.png" alt="" />
+                                </a>
+								<div class="l-version-facility-pan visible-xs">
+									<div class="l-version-panel">
+										<span class="version-info">Version 0.0.0</span><br>
+										<span class="l-i-txt">Last update 10/15/2015</span>
+									</div>
+									<p class="l-course-facility">
+										<i class="zmdi zmdi-volume-up" title="English course contains audio" data-toggle="tooltip" role="tooltip"></i>
+										<i class="zmdi zmdi-videocam" title="Course contains video" data-toggle="tooltip" role="tooltip"></i>
+										<i class="zmdi zmdi-smartphone-iphone" title="Mobile ready" data-toggle="tooltip" role="tooltip"></i>
+										<i class="zmdi zmdi-male" title="Accessible (WCAG AA)" data-toggle="tooltip" role="tooltip"></i>
+									</p>
+									<p class="l-course-type-xs"><span>Refresher Course </span></p>
+								</div>
+                            </div>
+                            <div class="caption">
+                                <a href="CourseDetail.html" title="Course Detail Page">
+                                    <h4 class="group inner list-group-item-heading l-list-md-heading">
+                                    <span class="underline">
+                                        Government Contract: Overview
+                                    </span>
+                                    </h4>
+                                    <div class="l-course-details">
+                                        <div class="l-course-content">
+											<div class="l-course-sub-tlt">DEF301</div>  <span class="l-sx-hide">|</span>  Government Contracting & Relationships
+											<p class="small">Refresher Course
+												<span class="l-course-duration"><i class="zmdi zmdi-time"></i>20 min</span>
+											</p>
+											<p class="l-course-facility hidden-xs">
+												<i class="zmdi zmdi-volume-up" title="English course contains audio" data-toggle="tooltip" role="tooltip"></i>
+												<i class="zmdi zmdi-videocam" title="Course contains video" data-toggle="tooltip" role="tooltip"></i>
+												<i class="zmdi zmdi-smartphone-iphone" title="Mobile ready" data-toggle="tooltip" role="tooltip"></i>
+												<i class="zmdi zmdi-male" title="Accessible (WCAG AA)" data-toggle="tooltip" role="tooltip"></i>
+											</p>
+
+											<div class="l-course-discription">This course provides an introduction to your company's rights and obligations under the various copyright.</div>
+											<div class="l-language-panel visible-xs">
+												<a title="TUR" href="#TUR">TUR</a>  <a title="SWE" href="#SWE">SWE</a>  <a title="RUS" href="#RUS">RUS</a>  <a title="PO" href="#PO">PO</a> <a title="POL" href="#POL">POL</a>  <a title="DUT" href="#DUT">DUT</a> <a title="KOR" href="#KOR">KOR</a>  <a title="JPN" href="#JPN">JPN</a>  <a title="ITL" href="#ITL">ITL</a> <a title="HEB" href="#HEB">HEB</a> <a title="FRE (EU)" href="#FRE (EU)">FRE (EU)</a>  <a title="FRE (CA)" href="#FRE (CA)">FRE (CA)</a> <a title="FIN" href="#FIN">FIN</a>  <a title="SPN (LT)" href="#SPN (LT)">SPN (LT)</a>  <a title="SPN (EU)" href="#SPN (EU)">SPN (EU)</a> <a title="ENG (INT)" href="#ENG (INT)">ENG (INT)</a>  <a title="CHN (SM)" href="#CHN (SM)">CHN (SM)</a>  <a title="GER" href="#GER">GER</a> <a title="More..." class="l-more-link">More...</a>
+											</div>
+										</div>
+										<div class="l-fixed-col hidden-xs">
+											<div class="l-version-panel">
+												<span class="version-info">Version 0.0.0</span><br>
+												<span class="l-i-txt">Last update 10/15/2015</span>
+											</div>
+											<div class="l-language-panel">
+												 <a title="TUR" href="#TUR">TUR</a>  <a title="SWE" href="#SWE">SWE</a>  <a title="RUS" href="#RUS">RUS</a>  <a title="PO" href="#PO">PO</a> <a title="POL" href="#POL">POL</a>  <a title="DUT" href="#DUT">DUT</a> <a title="KOR" href="#KOR">KOR</a>  <a title="JPN" href="#JPN">JPN</a>  <a title="ITL" href="#ITL">ITL</a> <a title="HEB" href="#HEB">HEB</a> <a title="FRE (EU)" href="#FRE (EU)">FRE (EU)</a>  <a title="FRE (CA)" href="#FRE (CA)">FRE (CA)</a> <a title="FIN" href="#FIN">FIN</a>  <a title="SPN (LT)" href="#SPN (LT)">SPN (LT)</a>  <a title="SPN (EU)" href="#SPN (EU)">SPN (EU)</a> <a title="ENG (INT)" href="#ENG (INT)">ENG (INT)</a>  <a title="CHN (SM)" href="#CHN (SM)">CHN (SM)</a>  <a title="GER" href="#GER">GER</a> <a title="More..." class="l-more-link">More...</a>
+											</div>
+										</div>
+									</div>
+                                </a>
+							</div>
+
+							<div class="label-new-holds">
+								<span class="label label-warning pull-right courseLabelPanel"><i class="courseLabel zmdi zmdi-star-circle"></i> New</span>
+								<!-- <span class="label label-warning pull-right courseLabelPanel"><i class="courseLabel zmdi zmdi-refresh-alt"></i> Updated!</span> -->
+							</div>
+							<a class="l-bookmark-holds" title="Add to Bookmark"><i class="zmdi zmdi-bookmark"></i></a>
+							</div>
+				</div>
+                    <!-- ng-repeat block -->
+                </div>
+                <!-- / Course listing -->
+            	</div>
+        </div>
+        <!-- Library Right Panel EN -->
+    </div>
+	</div>
+
+			<div class="row">
+                <div class="l-taccount-created col-md-12 text-right">
+                    <button name="submit" class="btn btn-secondary l-mr-25" onclick="location='ProspectsPartners.html'" data-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button name="submit" class="btn btn-primary" type="button" data-dismiss="modal">
+                        Done
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

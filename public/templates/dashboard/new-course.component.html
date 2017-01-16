@@ -1,0 +1,100 @@
+<!-- Award winning card ST -->
+<div *ngIf="topCourseData">
+    <div class="info-container l-mt-40">
+        <div class="row loader-wrap">
+            <div class="l-db-card">
+                <div class="item col-xs-12 col-sm-6 col-md-4 col-lg-4 list-group-item">
+                    <div class="thumbnail">
+                        <h4 class="group inner list-group-item-heading">
+                            Can your employees spot an inappropriate gift?
+                        </h4>
+                        <div class="l-course-brief">
+                            Most employees have a general awareness of the restrictions on gift giving, but may not understand the specific circumstances in which they apply.
+
+                            LRN's latest course on gifts and entertainment provides an overview of the relevant restrictions, and provides examples of how employees must behave to avoid violating the law or company policy.
+                        </div>
+                        <!--
+                        <h4 class="group inner list-group-item-heading l-list-sx-heading">
+                            The Honesty Project: Anti-Corruption and Bribery Game
+                        </h4>
+                       -->
+                        <div class="l-thumb-img-wrap">
+                            <a href="javascript:;" (click)='coursePlayHndler()' title="" class="l-video-play">
+                                <!-- Play video -->
+                                <div class="l-play-button">
+						<span class="l-valign">
+							<i class="zmdi zmdi-eye" aria-hidden="true"></i>
+						</span>
+                                </div>
+                                <!-- / Play video -->
+                                <img class="group list-group-image" src="public/images/media-honesty.png" alt="" />
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <a href="javascript:void();">
+                                <h4 class="group inner list-group-item-heading l-list-md-heading">
+					<span class="underline">
+						{{topCourseData.title}}
+					</span>
+                                </h4>
+                                <div class="l-course-details">
+                                    <div class="l-course-content">
+                                        <!--
+                                        <div class="l-course-sub-tlt">DEF301</div>  <span class="l-sx-hide">|</span>  Government Contracting & Relationships
+                                        -->
+                                        <div class="l-course-sub-tlt">{{topCourseData.catalog_id}}</div>  <span *ngIf="topCourseData.main_topic">&nbsp;|&nbsp;</span> {{topCourseData.main_topic}}
+
+                                        <p class="small">{{topCourseData.course_type}}
+                                            <span class="l-course-duration" *ngIf="topCourseData.estimated_time"><i class="zmdi zmdi-time"></i>{{topCourseData.estimated_time}} min</span>
+                                        </p>
+                                        <p class="l-course-facility">
+                                            <i class="zmdi zmdi-volume-up" *ngIf="topCourseData.audio=='Y'" title="English course contains audio" data-toggle="tooltip" role="tooltip"></i>
+                                            <i class="zmdi zmdi-videocam" *ngIf="topCourseData.video=='Y'" title="Course contains video" data-toggle="tooltip" role="tooltip"></i>
+                                            <i class="zmdi zmdi-smartphone-iphone" *ngIf="topCourseData.is_MobileReady=='Y'" title="Mobile ready" data-toggle="tooltip" role="tooltip"></i>
+                                            <i class="zmdi zmdi-male" *ngIf="topCourseData.is_MobileReady=='Y'" title="Accessible (WCAG AA)" data-toggle="tooltip" role="tooltip"></i>
+                                        </p>
+                                    </div>
+                                    <!--
+                                    <div class="l-fixed-col">
+                                    <span class="version-info">Version 2.17</span><br>
+                                    <span class="l-i-txt">Last update 10/15/2015</span>
+                                    </div>
+                                    -->
+                                </div>
+                            </a>
+                            <div class="l-course-details l-course-discription">
+                                <div class="l-course-content">
+                                    {{topCourseData.description}}
+                                   <!--This course provides an introduction to your company's rights and obligations under the various copyright, trademark, design.-->
+                                </div>
+                                <a href="javascript:;" title="View Details" class="btn btn-primary pull-right" [routerLink]=" ['Courses-detail',{'id':topCourseData.catalog_id,'tab':componentName}] " >
+                                    View Details
+                                </a>
+                                <!--
+                                <div class="btn btn-primary pull-right" [routerLink]=" ['Courses-detail',{'id':topCourseData.catalog_id,'tab':componentName}] " >
+                                    View Details
+                                </div>
+                                -->
+                                <!--
+                                <div class="l-fixed-col stick-bot">
+                                    <span class="l-i-txt">17 languages available</span>
+                                </div>
+                                -->
+                            </div>
+                            <div class="label-new-holds">
+					<span class="label label-warning pull-right">
+					<i class="zmdi zmdi-star-circle"></i> New</span>
+                            </div>
+                            <!--
+                            <a class="l-bookmark-holds" title="Add to Bookmark">
+                                <i class="zmdi zmdi-bookmark"></i>
+                            </a>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Award winning card EN -->

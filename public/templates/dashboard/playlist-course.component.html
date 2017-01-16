@@ -1,0 +1,33 @@
+<div class="owl-item item">
+    <div class="thumbnail">
+        <div class="caption">
+            <a [routerLink]=" ['Courses-detail',{'id':course.catalog_id,'tab':'dashboard'}] " title="Course Detail Page">
+                <h4 class="group inner list-group-item-heading l-list-md-heading">
+                            <span class="underline">
+                                {{course.title}}
+                            </span>
+                </h4>
+                <div class="l-course-details">
+                    <div class="l-course-content">
+                        <div class="l-course-sub-tlt">{{course.catalog_id}}</div>  <span class="l-sx-hide" *ngIf="course.main_topic">&nbsp;|&nbsp;</span> {{course.main_topic}}
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="l-thumb-img-wrap">
+            <div class="label-new-holds">
+                <span class="label label-warning pull-right">Updated!</span>
+            </div>
+            <a href="javascript:void(0);" (click)='coursePlayHndler(course.system_id)' title="" class="l-video-play">
+                <!-- Play video -->
+                <div class="l-play-button">
+                                <span class="l-valign">
+                                    <i class="zmdi zmdi-eye" aria-hidden="true"></i>
+                                </span>
+                </div>
+                <!-- / Play video -->
+                <img class="group list-group-image" src="https://portal.dev.lrn.com/course-images/{{course.catalog_id}}.jpg" onerror="javascript:this.src='https://portal.dev.lrn.com/course-images/image-notfound-blue.jpg'" alt="IMAGE NOT FOUND">
+            </a>
+        </div>
+    </div>
+</div>

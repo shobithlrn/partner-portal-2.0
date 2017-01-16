@@ -1,0 +1,252 @@
+<div *ngIf="courseData" class="row l-course-detail-wrap">
+		<div class="l-back-link">
+		<span class="l-back-btn" role="link" title="Back" (click)="goback()">
+			<i class="zmdi zmdi-arrow-left" aria-hidden="true"></i> <span class="visible-xs">Back</span>
+		</span>
+	<!-- <div class="l-more-info-menu pull-right visible-xs">
+			<span class="" data-toggle="dropdown">
+				<i class="zmdi zmdi-more-vert"></i>
+			</span>
+			<ul class="dropdown-menu dropdown">
+				<li>
+					<a href="javascript:;" title="Share Course">
+					<i class="zmdi zmdi-share"></i> Share Course
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;" title="Add to Playlist">
+					<i class="zmdi zmdi-view-list"></i> Add to Playlist
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;" title="Export to PDF">
+					<i class="zmdi zmdi-collection-pdf"></i> Export to PDF
+					</a>
+				</li>
+				<li class="divider"></li>
+				<li class="text-left">
+					<a href="javascript:;" title="Preview Course">
+					<i class="zmdi zmdi-eye" aria-hidden="true"></i> Preview Course
+					</a>
+				</li>
+				<li class="text-left">
+					<a href="javascript:;" title="View Course Details">
+					<i class="zmdi zmdi-more" aria-hidden="true"></i> View Course Details
+					</a>
+				</li>
+			</ul>
+		</div> -->
+</div>
+<!-- Course details card ST -->
+<div class="l-course-detail-card">
+    <div class="item col-xs-12 col-sm-6 col-md-4 list-group-item">
+        <div class="thumbnail">
+            <a title="Intellectual Property: Overview" href="#CourseDetailPage">
+                <h4 class="group inner list-group-item-heading l-list-sx-heading">
+						<span class="underline">
+							Intellectual Property: Overview
+						</span>
+                </h4>
+            </a>
+            <div class="l-thumb-img-wrap" (click)="playEnglishCourse()">
+                <a class="l-video-play">
+                    <!-- Play video -->
+                    <div class="l-play-button">
+							<span class="l-valign">
+								<i class="zmdi zmdi-eye" aria-hidden="true"></i>
+							</span>
+                    </div>
+                    <!-- / Play video -->
+                    <img src="/course-images/{{catalog_id}}.jpg" alt="Course Image" onerror="javascript:this.src='/public/images/image-notfound-blue.jpg'" class="group list-group-image">
+                </a>
+            </div>
+            <div class="caption">
+                <a title="Government Contract: Overview">
+                    <h4 class="group inner list-group-item-heading l-list-md-heading">
+						<span class="underline">
+							{{courseData.title}}
+						</span>
+                        <!--<span class="l-label-new">New</span>-->
+                    </h4>
+                    <div class="l-course-details">
+                        <div class="l-course-content">
+                            <div class="l-course-sub-tlt">{{courseData.catalog_id}}</div>  <span class="hidden-xs">|</span>  <span class="l-course-sub-tlt-topic">{{courseData.main_topic}}</span>
+                            <p class="small">{{courseData.course_type}}
+								<span class="l-course-duration" *ngIf="estimated_time">
+									<i class="zmdi zmdi-time" aria-hidden="true"></i>{{courseData.estimated_time}} min
+								</span>
+                            </p>
+                            <p class="l-course-facility">
+                                <i class="zmdi zmdi-volume-up" title="English course contains audio" data-toggle="tooltip" role="tooltip" *ngIf="courseData.audio=='Y'"></i>
+                                <i class="zmdi zmdi-videocam" title="Course contains video" data-toggle="tooltip" role="tooltip" *ngIf="courseData.video=='Y'"></i>
+                                <i class="zmdi zmdi-smartphone-iphone" title="Mobile ready" data-toggle="tooltip" role="tooltip" *ngIf="courseData.is_MobileReady=='Y'"></i>
+                                <i class="zmdi zmdi-male" title="Accessible (WCAG AA)" data-toggle="tooltip" role="tooltip" *ngIf="courseData.is_MobileReady=='Y'"></i>
+                            </p>
+                        </div>
+                        <div class="l-fixed-col">
+                            <span class="version-info">Version {{courseData.version}}</span><br>
+                            <span class="l-i-txt">Last update {{courseData.custdate | date:'shortDate'}}</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="l-course-details l-course-discription">
+				
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-8">
+						<div class="l-course-content">
+							{{courseData.description}}
+						</div>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-4 l-languages-panel">
+						<div class="l-fixed-col stick-bot">
+							<span *ngFor="#lang of languages" (click)="coursePlayHndler(lang.split(':')[2])">
+								<a href="javascript:void(0);" title="{{lang.split(':')[0] | uppercase}}">{{lang.split(':')[1] | uppercase}}</a>
+							</span>
+						</div>
+						</div>
+					</div>
+                </div>
+				<div class="label-new-holds">
+                    <span class="label label-warning pull-right"><i class="courseLabel zmdi zmdi-star-circle" *ngIf="isNewCourse"></i><i class="courseLabel zmdi zmdi-refresh-alt" *ngIf="!isNewCourse"></i>{{courseType}}</span>
+                </div>
+                <a title="Add to Bookmark" class="l-bookmark-holds">
+                    <i class="zmdi zmdi-bookmark-outline" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Course detail card EN -->
+<div class="col-xs-12 col-sm-12 col-md-4 l-course-detail-lp">
+    <div class="l-course-preview" id="previewEng">
+        <button>
+            <i class="zmdi zmdi-eye" aria-hidden="true"></i>
+        </button>
+        <div class="l-pre-lang">
+            <div class="text-center">View in:
+                <span class="l-pre-lang-selected">English</span>
+            </div>
+        </div>
+        <button class="l-select-lang-btn pull-right" data-toggle="dropdown">
+            <i class="zmdi zmdi-chevron-down" aria-hidden="true"></i>
+        </button>
+        <ul class="dropdown-menu dropdown" id="selectLang">
+
+            <li *ngFor="#lang of languages" (click)="coursePlayHndler(lang.split(':')[2])">
+                <span class="">
+                    <i class="zmdi zmdi-eye" aria-hidden="true" id="{{lang.split(':')[0] | uppercase}}"></i> {{lang.split(':')[0] | uppercase}}
+                </span>
+            </li>
+
+        </ul>
+    </div>
+    <!-- Course actions menu ST -->
+    <div class="l-course-actions l-deactive" >
+
+        <button class="" title="Coming Soon!"><i class="zmdi zmdi-share" aria-hidden="true"></i></button>
+		<span class="l-playlist-dd l-bm-dd">
+			<button class="l-list-dd-btn" data-toggle="dropdown" title="Coming Soon!">
+				<i class="zmdi zmdi-format-list-bulleted" aria-hidden="true"></i>
+				<i class="zmdi zmdi-chevron-down" aria-hidden="true"></i>
+			</button>
+			<ul class="dropdown-menu dropdown">
+				<li>
+					<a class="" title="Coming Soon!">Prospects Starter Playlist</a>
+				</li>
+				<li>
+					<a title="Coming Soon!">Playlist for Pharma</a>
+				</li>
+				<li>
+					<a title="Coming Soon!">Some Other List</a>
+				</li>
+				<li>
+					<a title="Coming Soon!">Create New Playlist</a>
+				</li>
+			</ul>
+		</span>
+        <button title="Coming Soon!"><i class="zmdi zmdi-collection-pdf" aria-hidden="true"></i></button>
+    </div>
+    <!-- Course actions menu EN -->
+    <!-- Course info ST -->
+    <div class="l-course-primary-info l-bdr-btm" id="">
+        <div>
+            <span class="proxima-semibold">Created Date:</span> <span>{{courseData.createdAt | date:'shortDate'}}</span>
+        </div>
+        <div>
+            <span class="proxima-semibold">Last Update:</span> <span>{{courseData.custdate | date:'shortDate'}}</span>
+        </div>
+        <!--div class="l-course-new" class="l-dummy-txt">
+            <div class="proxima-semibold">What's New in Version 2.0.1</div>
+            <p>
+                This course has been updated to reflect the new laws in something or something
+            </p>
+            <p>
+                Understanding special rules for government contracting helps companies and their employees to compete for valuable government business.
+            </p>
+        </div-->
+    </div>
+    <div class="l-course-primary-info">
+        <div class="">
+            <span class="proxima-semibold">Employee Level:</span> <span>{{courseData.audience}}</span>
+        </div>
+        <div>
+            <span class="proxima-semibold">Target Industry:</span> <span>{{courseData.industry}}</span>
+        </div>
+        <div>
+            <span class="proxima-semibold">Target Region:</span> <span>{{courseData.region}}</span>
+        </div>
+
+        <div class="l-mt-30 xs-mt-0">
+            <div class="proxima-semibold">Keywords:</div>
+            <p>{{courseData.keywords}}</p>
+        </div>
+    </div>
+    <!-- Course info EN -->
+</div>
+<div class="col-xs-12 col-sm-12 col-md-8 l-course-detail-rp">
+    <div class="l-course-intro l-about-course-panel" id="aboutCourse">
+        <!--<h4>About the course</h4>-->
+        <p class="header">About the course</p>
+        <p [innerHTML]="courseData.long_description"></p>
+    </div>
+
+    <!--div class="l-course-intro" id="learningCourse">
+        <p class="header">Learning Objectives</p>
+        <ul class="l-dummy-txt">
+            <li>
+                Recognize the basic laws and ethical rules that must be followed by companies doing business with the government.
+            </li>
+            <li>
+                Recognize the consequences of failing to comply with laws and rules related to government contracts.
+            </li>
+            <li>
+                Identify different types of government contracts.
+            </li>
+            <li>
+                Recognize government standards for awarding contracts.
+            </li>
+            <li>
+                Recognize personal responsibilities related to government contracts.
+            </li>
+        </ul>
+    </div-->
+
+    <div class="l-course-intro" id="tableCourse">
+        <p class="header">Table of contents</p>
+        <ul [innerHTML]="courseData.toc">
+
+        </ul>
+    </div>
+
+    <!-- Related Courses: -->
+        <div class="l-sub-tab-container">
+        <div class="l-sub-tlt-panel">
+            <h2 class="l-sub-tlt pull-left" *ngIf="finalRelatedCourses.length>0">Related Courses:</h2>
+        </div>
+        <div class="clearfix"></div>
+		<div class="row list-group l-related-courses">
+			<course *ngFor="#course of finalRelatedCourses, #index = index" [course-data]="course" [selectCheckbox]="false" [index]="index" [componentName]="'library'"></course>
+		</div>
+		</div>
+</div>
+</div>

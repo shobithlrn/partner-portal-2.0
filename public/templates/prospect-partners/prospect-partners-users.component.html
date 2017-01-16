@@ -1,0 +1,110 @@
+<div class="info-container l-sub-tab-panel" style="position:relative">
+<div class="operator-loader-wrap" [ngClass]="{'show-loader':isLoading}">
+      <div class="loader-mask text-center">
+        <div class="showbox">
+          <div class="loader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="10" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default l-radius0">
+      <div class="panel-body">
+        <div class="row table-top-row">
+          <div class="col-xs-6 col-sm-5 col-md-6 col-lg-9">
+
+      <!-- Records drop down ST -->
+      <div class="l-select-dd-wrap pull-left l-records-dd" id="accountRecordsfield" *ngIf="totalCount>=initialdropDownValues[0]">
+        <input type="text" name="" id="selectedRecordAll" autocomplete="off" placeholder="" class="form-control l-records-field" [value]="dropDownValue" readonly>
+        <div class="btn-action" data-toggle="dropdown">
+          <i class="zmdi zmdi-chevron-down" aria-hidden="true"></i>
+        </div>
+        <ul class="dropdown-menu dropdown" role="listbox">
+          <li role="option" [ngClass]="{'active':option==dropDownValue}" *ngFor="#option of dropDownValues" (click)="optionsClick(option)">
+            <span>{{option}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="l-records-of" *ngIf="totalCount!=0"><span *ngIf="totalCount>=initialdropDownValues[0]">of</span> {{totalCount}} <span class="l-hidden-mobile">user<span *ngIf="totalCount>1">s</span></span></div>
+      <!-- Records drop down EN -->
+
+          </div>
+          <div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0 col-lg-3 col-lg-offset-0">
+            <!-- Search text field ST -->
+      <div class="l-search-courses-wrap" id="searchTextfield">
+            <input type="text" name="searchCourses" id="searchCourses" #val autocomplete="off" class="form-control" placeholder="Search" name="q" [value]='inputSearchTerm' (input)="searchUsers(val.value)">
+            <div class="btn-action">
+              <i class="zmdi zmdi-search" aria-hidden="true" *ngIf="!inputSearchTerm"></i>
+              <i class="zmdi zmdi-close" aria-hidden="true" id="closeSearch" *ngIf="inputSearchTerm" (click)="searchUsers('')"></i>
+              <!--<button class="btn btn-default l-radius0" type="submit" (click)="searchUsers()"></button>-->
+            </div>
+          </div>
+          <div class="text-danger" *ngIf="serachDisplayMsg">
+                      Minimum 3 characters required for search
+                  </div>
+      <!-- Search text field EN -->
+          </div>
+        </div>
+		 <div class="l-table" *ngIf="totalCount>0">
+			<div class="l-table-heading">
+				<div class="l-table-head" *ngIf="isMine=='all'">&nbsp;</div>
+				<div class="l-table-head">Account Status</div>
+				<div class="l-table-head">Days Left</div>
+				<div class="l-table-head">Last Login</div>
+				<div class="l-table-head">Name/Title</div>
+				<div class="l-table-head">Company</div>
+				<div class="l-table-head">Contact Info</div>
+				<div class="l-table-head">Assigned to</div>
+			</div>
+			<div class="l-table-body">
+				<div class="l-table-row" *ngFor="#user of users ;#i=index" [ngClass]="{'l-bookmark-row':user.bookmarked && !(user.creator==userDetails.userid.toString())}" >
+					<div class="l-table-cell" data-content=" " *ngIf="isMine=='all'"><a href="javascript:void(0);" [ngClass]="{'l-user-icon':user.creator==userDetails.userid.toString(), 'l-add-bookmark':!(user.creator==userDetails.userid.toString())}" ><i class="zmdi" [ngClass]="{'zmdi-account':user.creator==userDetails.userid.toString(), 'zmdi-star':!(user.creator==userDetails.userid.toString())}" (click)="bookmarkHandler(user)"></i></a></div>
+					<div class="l-table-cell" data-content="Account Status"><span class="label label-{{user.status|lowercase}}">{{user.status}}</span><span class="l-ac-type">Trial</span></div>
+					<div class="l-table-cell" data-content="Days Left">{{user.daysLeft}}</div>
+					<div class="l-table-cell" data-content="Last Login">{{user.lastLoginDate}}</div>
+					<div class="l-table-cell" data-content="Name/Title"><a href="javascript:void(0);" [title]="user.name">{{user.name}}</a> <br />{{user.job_title}}</div>
+					<div class="l-table-cell" data-content="Company"><a href="javascript:void(0);" (click)="opencompanyProfilePage(i)" [title]="user.companyName">{{user.companyName}}</a></div>
+					<div class="l-table-cell" data-content="Contact Info"> {{user.email}}<br />{{user.contact_no}}</div>
+					<div class="l-table-cell" data-content="Assigned to"><span *ngIf="user.assigned_to==userName">Me</span><span *ngIf="user.assigned_to!=userName">{{user.assigned_to}}</span></div>
+				</div>
+			</div>
+		</div>
+
+
+        <!-- <table class="table table-hover ng-table l-responsive-tbl table2" *ngIf="totalCount>0">
+            <thead>
+              <tr>
+                <th *ngIf="isMine=='all'">&nbsp;</th>
+                <th>Account Status</th>
+                <th>Days Left</th>
+                <th>Last Login</th>
+                <th>Name/Title</th>
+                <th>Company</th>
+                <th>Contact Info</th>
+                <th>Assigned to</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="#user of users ;#i=index">
+                <td class="text-center" *ngIf="isMine=='all'"><a href="javascript:void(0);" title="Add to Bookmark" class="l-add-bookmark"><i class="zmdi zmdi-star"></i></a></td>
+                <td><span class="label label-{{user.status|lowercase}}">{{user.status}}</span><span class="l-ac-type">Trial</span></td>
+                <td>{{user.daysLeft}}</td>
+                <td>{{user.lastLoginDate}}</td>
+                <td><a href="javascript:void(0);" [title]="user.name">{{user.name}}</a> <br />
+              {{user.job_title}}</td>
+                <td><a href="javascript:void(0);" [title]="user.companyName">{{user.companyName}}</a></td>
+                <td> {{user.email}}<br />
+              {{user.contact_no}}</td>
+               <td><span *ngIf="user.assigned_to==userName">Me</span><span *ngIf="user.assigned_to!=userName">{{user.assigned_to}}</span></td>
+              </tr>
+            </tbody>
+          </table> -->
+        <div *ngIf="totalCount==0" class="l-no-user-msg">It’s pretty quiet around here. Why don’t you <a class="link-text" href="javascript:void(0)" (click)="openNewTrialAccountPage()">create a trial user</a>?</div>
+        <div class="pagination-bottom pull-right" *ngIf="totalCount>0">
+          <pagination [totalItemsCount]="totalCount" [dropDownValue]="dropDownValue" (currentPageValue)="paginationValueChange($event)"></pagination>
+        </div>
+      </div>
+    </div>
+  </div>

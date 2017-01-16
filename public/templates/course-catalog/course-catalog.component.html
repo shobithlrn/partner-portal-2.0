@@ -1,0 +1,36 @@
+<h1 class="l-page-tlt hidden-xs" style="display:none">Library</h1>
+<div class="l-sub-nav-panel">
+    <div class="l-sub-nav-lft pull-left">
+        <ul class="l-sub-nav">
+            <li class="l-current_page"><a title="Courses">Courses</a><!-- <a (click)="toggleCourseAndPlaylist()" title="Courses">Courses</a> --></li>
+            <li class="l-deactive"><span title="Coming Soon!">Playlists</span><!-- <a title="Playlists" (click)="toggleCourseAndPlaylist()">Playlists</a> --></li>
+        </ul>
+    </div>
+    <!-- <button class="btn l-tertiary pull-right hidden-xs" title="View All Courses">
+        View All Courses
+    </button> -->
+    <!--<div class="l-sub-nav-rht pull-right">Search Will Come here</div>-->
+    <form name="search-courses">
+        <div class="l-search-courses-wrap hidden-xs" id="searchTextfield">
+            <input ngControl="searchCourses" type="text" (enter)="btnSubmitHandler()"  name="searchCourses"  id="searchCourses"  autocomplete="off" placeholder="Search for courses" class="form-control l-radius0">
+
+            <div class="btn-action">
+                <i class="zmdi zmdi-search" aria-hidden="true" (click)="btnSubmitHandler()" title=""Search></i>
+               <!-- <i disabled="true" class="zmdi zmdi-close hide" aria-hidden="true" id="closeSearch" (click)="btnCloseHandler($event.target)"  title=""Remove Search></i>-->
+            </div>
+
+                <ul class="l-search-course-dropdown" id="selectAutoCourses">
+                    <li role="option" *ngFor="#serachResult of serachResults" (click)="selectSearchTermHandler($event.target.innerText)" style="cursor: pointer" >
+                        <span class="autoSelectOption"    >{{serachResult}}</span>
+                    </li>
+                </ul>
+        </div>
+    </form>
+</div>
+
+<div class="clearfix"></div>
+<div>
+<featured-courses [hidden] ="isToggle" [searchTerm]="searchCourseterm"></featured-courses>
+
+<!-- <courses-playlist [hidden]="!isToggle"></courses-playlist> -->
+</div>

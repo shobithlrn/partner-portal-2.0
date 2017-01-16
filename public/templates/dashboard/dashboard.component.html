@@ -1,0 +1,128 @@
+
+
+    <h1 *ngIf="isAdminOrLRNuser" class="l-page-tlt hidden-xs">{{userName}}'s Dashboard</h1>
+    <div *ngIf="isAdminOrLRNuser" class="info-container" style="position:relative">
+     <!--  <div [hidden]="!isLoading" style="position: absolute;width: 100%;background-color: rgba(0,0,0,0.3);height: 100%;z-index: 10000;">
+       <i class="fa fa-spinner" aria-hidden="true"></i>
+     </div> -->
+        <div class="operator-loader-wrap" [ngClass]="{'show-loader':isLoading}">
+            <div class="loader-mask text-center">
+                <div class="showbox">
+                  <div class="loader">
+                    <svg class="circular" viewBox="25 25 50 50">
+                      <circle class="path" cx="50" cy="50" r="10" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                    </svg>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default l-radius0">
+            <div class="panel-heading l-radius0">
+                <h2 class="panel-title pull-left"> My Prospects </h2>
+                <div class="pull-right l-create-panel"><a (click)="openProspectPartnersPage()" class="btn btn-link" role="button" title="View All My Accounts">View All My Accounts</a> <a (click)="openNewTrialAccountPage()" class="btn btn-primary l-radius0" role="button" title="Create New Trial" *ngIf="isAdminOrLRNuser"><i class="zmdi zmdi-plus"></i> Create New Trial </a></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+                <div class="row table-top-row">
+                  <div class="col-xs-6 col-sm-5 col-md-6 col-lg-9">
+                    <!-- Records drop down ST -->
+      <div class="l-select-dd-wrap pull-left l-records-dd" id="accountRecordsfield" *ngIf="totalCount>=initialdropDownValues[0]">
+        <input type="text" name="" id="selectedRecordAll" autocomplete="off" placeholder="" class="form-control l-records-field" [value]="dropDownValue" readonly>
+        <div class="btn-action" data-toggle="dropdown">
+          <i class="zmdi zmdi-chevron-down" aria-hidden="true"></i>
+        </div>
+        <ul class="dropdown-menu dropdown" role="listbox">
+          <li role="option" [ngClass]="{'active':option==dropDownValue}" *ngFor="#option of dropDownValues" (click)="optionsClick(option)">
+            <span>{{option}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="l-records-of" *ngIf="totalCount!=0"><span *ngIf="totalCount>=initialdropDownValues[0]">of</span> {{totalCount}} <span class="l-hidden-mobile">user<span *ngIf="totalCount>1">s</span></span></div>
+      <!-- Records drop down EN -->
+                  </div>
+                  <div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0 col-lg-3 col-lg-offset-0">
+                    <div class="l-search-courses-wrap" id="searchTextfield">
+                        <input type="text" name="searchCourses" id="searchCourses" #val autocomplete="off" class="form-control" placeholder="Search" name="q" [value]='inputSearchTerm' (input)="searchUsers(val.value)">
+                        <div class="btn-action">
+                            <i class="zmdi zmdi-search" aria-hidden="true" *ngIf="!inputSearchTerm"></i>
+                            <i class="zmdi zmdi-close" aria-hidden="true" id="closeSearch" *ngIf="inputSearchTerm" (click)="searchUsers('')"></i>
+                            <!--<button class="btn btn-default l-radius0" type="submit" (click)="searchUsers()"></button>-->
+                        </div>
+                    </div>
+                    <div class="text-danger" *ngIf="serachDisplayMsg">
+                        Minimum 3 characters required for search
+                    </div>
+                  </div>
+
+                </div>
+                <div class="l-table" *ngIf="totalCount>0"> 
+					<div class="l-table-heading">
+						<div class="l-table-head">Account Status</div>
+						<div class="l-table-head">Days Left</div>
+						<div class="l-table-head">Last Login</div>
+						<div class="l-table-head">Company</div>
+						<div class="l-table-head">Name/Title</div>
+						<div class="l-table-head">Contact Info</div>
+					</div> 
+                    <div class="l-table-body">
+						<div class="l-table-row" *ngFor="#user of users ;#i=index">
+							<div class="l-table-cell" data-content="Account Status">
+							  <span class="label label-{{user.status|lowercase}}">{{user.status}}</span>
+							</div>
+							<div class="l-table-cell" data-content="Days Left">{{user.daysLeft}}</div>
+							<div class="l-table-cell" data-content="Last Login">{{user.lastLoginDate}}</div>
+							<div class="l-table-cell" data-content="Company"><a href="javascript:void(0);" [title]="user.companyName">{{user.companyName}}</a></div>
+							<div class="l-table-cell" data-content="Name/Title"><a href="javascript:void(0);" [title]="user.name">{{user.name}}</a> <br />
+							  {{user.job_title}}</div>
+							<div class="l-table-cell" data-content="Contact Info"> {{user.email}}<br />
+							  {{user.contact_no}}</div>
+						</div>
+                    </div>
+                </div>
+                <div *ngIf="totalCount==0" class="l-no-user-msg">It’s pretty quiet around here. Why don’t you <a class="link-text" href="javascript:void(0);" (click)="openNewTrialAccountPage()" >create a trial user</a>?</div>
+                <div class="pagination-bottom pull-right" *ngIf="totalCount>0">
+                    <pagination [totalItemsCount]="totalCount" [dropDownValue]="dropDownValue" (currentPageValue)="paginationValueChange($event)"></pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <new-updatedcourse *ngIf="isAdminOrLRNuser"></new-updatedcourse>
+
+
+    <h1 *ngIf="!isAdminOrLRNuser" class="l-page-tlt hidden-xs">Welcome, {{userName}}!</h1>
+    <!-- Banner ST -->
+    <div *ngIf="!isAdminOrLRNuser" class="container l-db-hero-wrapper">
+        <div class="l-db-hero" style="background-image: url({{imgUrlTrial}})">
+            <div class="l-hero-content">
+                <div class="l-hero-cell">
+                    <h2>
+                        Discover <span class="proxima-bold">principled performance </span><br>
+                        in your organization.
+                    </h2>
+                    <div  (click)="openCourseCatalogPage()" class="btn btn-primary">
+                         Explore our Library
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner EN -->
+
+    <!-- Award winning card ST -->
+    <new-course *ngIf="!isAdminOrLRNuser" [componentName]="'dashboard'"></new-course>
+    <!-- Award winning card EN -->
+
+
+    <div *ngIf="!isAdminOrLRNuser" class="recommended-panel clearfix">
+        <div class="grey-wrapper" >
+        <!-- Recommended course ST  -->
+			<recommended-course *ngIf="false"></recommended-course>
+        <!-- Recommended course EN -->
+
+        <!-- LRN Play list card ST -->
+            <playlists *ngIf="!isAdminOrLRNuser"></playlists>
+        <!-- LRN Play list card EN -->
+        </div>
+    </div>
+

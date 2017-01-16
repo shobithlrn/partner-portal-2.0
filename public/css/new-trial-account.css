@@ -1,0 +1,584 @@
+/* New trial account */
+.l-wizard {
+    border: 0;
+    padding-top: 25px;
+    max-width: 860px;
+    margin: 0 auto;
+    width: 100%;
+	height: 90px;
+}
+.l-wizard-progress {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	position: relative;
+}
+.l-wizard-progress .l-step {
+	display: table-cell;
+	text-align: center;
+	vertical-align: top;
+	overflow: visible;
+	position: relative;
+	font-size: 18px;
+	color: #0277BD;
+	font-weight: bold;
+	line-height: 1;
+}
+.l-wizard-progress .l-step.l-incomplete {
+	color: rgba(0,0,0,.38);
+}
+.l-wizard-progress .l-step:not(:last-child):before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 37px;
+	background-color: #E0E0E0;
+	height: 6px;
+	width: 100%;
+}
+.l-wizard-progress .l-step .l-node {
+	display: inline-block;
+	border: 6px solid #E0E0E0;
+	background-color: #E0E0E0;
+	border-radius: 20px;
+	height: 40px;
+	width: 40px;
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	margin-left: -18px;
+	color: #fff;
+	line-height: 1.2;
+	font-size: 24px;
+}
+.l-wizard-progress .l-step.l-complete:before {
+	background-color: #0277BD;
+}
+.l-wizard-progress .l-step.l-complete .l-node {
+	border-color: #0277BD;
+	background-color: #0277BD;
+}
+.l-wizard-progress .l-step.l-in-progress .l-node {
+	border-color: #0277BD;
+	background-color: #0277BD;
+}
+.l-wizard-progress .l-step.l-in-progress:before {
+	background: #E0E0E0;
+}
+.l-contact-panel .l-contact-row:first-child .l-line{ border-top:0}
+.l-contact-panel .l-contact-row:first-child .l-remove-form{ display:none}
+.l-contact-panel .l-contact-row .l-remove-form { position:relative; padding-left:20px;display: inline-block;margin-bottom: 16px; color:#23527c}
+.l-contact-panel .l-contact-row .l-remove-form .zmdi-delete:before{ color:#23527c;position:absolute;left:0;top:1px; font-size:22px}
+.l-line {
+	border-top: 1px solid #D6D6D6;
+	padding-top: 30px;
+}
+
+.l-line a {
+	font-size: 16px;
+}
+/* Trial Account form ST */
+.l-new-trial-form,
+.l-taccount-action {
+	position: relative;
+}
+.l-taccount-action {
+	width: 100%;
+}
+
+.form-horizontal .control-label.text-left{text-align:left}
+.info-container .control-label{ font-weight:700;  padding-top: 7px;}
+.l-new-trial-form .control-label {
+	color: #000000;
+	color: rgba(0,0,0, 0.87);
+	font-family: 'proxima_nova_rgbold';
+	font-size: 18px;
+	margin-right: 0;
+    position: relative;
+    overflow: hidden;
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 10px;
+	min-width: 65px;
+	max-width: 120px;
+	text-align: left;
+	padding-right: 0;
+}
+.l-new-trial-form .control-label .zmdi-star:before{font-size:10px;color:red;position: absolute;top: 6px}
+
+.l-new-trial-form .l-search-courses-wrap {
+    padding-left: 0;
+    padding-right: 0;
+}
+.l-new-trial-form .l-search-courses-wrap {
+	max-width: 300px;
+	padding-right: 0;
+	padding-right: 0px;
+    margin-left: 15px;
+    padding-left: 0;
+    margin-right: 15px;
+}
+
+.l-new-trial-form .l-search-courses-wrap  .btn-link{ padding: 0}
+
+.l-new-trial-form .form-control {
+	width: 100%;
+	display: inline-block;
+	background-color: #ffffff;
+	min-width: 200px;
+	max-width: 300px;
+	padding-right: 32px;
+	padding-left: 18px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.form-horizontal.l-new-trial-form .form-group{ 
+	margin-bottom: 20px;
+	margin-left:0;
+	margin-right:0;
+}
+
+.l-dd-field {
+	line-height: 28px;
+	z-index: 3;
+}
+.l-m-newaccount .l-dd-field,
+.l-dd-field ~ .btn-action,
+.l-pointer,
+.l-account-duration .l-dd-field{
+	cursor: pointer;
+}
+.l-new-trial-form .l-search-courses-wrap .dropdown-menu {
+    max-width: 300px;
+	width: 100%;
+    left: auto;
+	top: 0;
+}
+.l-cname .l-search-courses-wrap .dropdown-menu{
+	top: 36px;
+}
+.l-new-trial-form  .l-cname {
+	margin-top: 12px;
+}
+.l-new-trial-form .l-search-courses-wrap .btn-action {
+	right: 0;
+}
+.l-search-courses-wrap.open .l-dd-field {
+	box-shadow: none;
+}
+.l-new-trial-form .dropdown-menu>li>span,
+.l-new-trial-form .l-auto-list >li>span,
+.l-new-trial-form .l-fixed-link >li>span{
+	color: rgba(0,0,0, 0.87);
+	padding: 9px 20px;
+	white-space: initial;
+	white-space: normal;
+	clear: both;
+	display: block;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	cursor: pointer;
+}
+.l-new-trial-form .l-fixed-link >li>span {
+	color: #9A8664;
+}
+.l-new-trial-form .l-auto-list >li>span:hover,
+.l-new-trial-form .l-fixed-link >li>span:hover {
+	color: #014f91;
+	color: rgba(0, 0, 0, 0.54);
+}
+.l-new-trial-form .l-auto-list >li>span:hover {
+	background: #ffe7b1;
+}
+.l-auto-list {
+	max-height: 144px;
+	overflow-y: auto;
+	margin-bottom: 32px;
+}
+.l-mb-0 {
+	margin-bottom: 0;
+}
+.l-fixed-link {
+	position: absolute;
+	bottom: 0;
+	background: #FFDFA8;
+	width: 100%;
+}
+.l-new-trial-form button{
+	margin-top: 15px;
+}
+.l-new-trial-form .l-account-duration .control-label,
+.l-new-trial-form .l-welcome-wrapper .control-label{
+	display: block;
+    width: 100%;
+    max-width: 100%;
+	margin-bottom: 15px;
+}
+.l-notify-link {
+	max-width: initial;
+	max-width: inherit;
+	position: relative;
+	display: inline-block;
+	padding-top: 20px;
+	color: rgba(0,0,0, 0.87);
+	margin-left: 0;
+	margin-top: 5px;
+	margin-bottom: 0;
+}
+.l-notify-link .input-md input[type='checkbox'] {
+	width: 100%;
+}
+.l-welcome-msg {
+	font-size: 16px;
+	border: 1px solid #dddddd;
+	padding: 20px;
+}
+.l-new-trial-form .l-welcome-wrapper .control-label {
+	margin-bottom: 5px;
+    margin-top: 0;
+    padding-top: 0;
+}
+.l-new-trial-form .control-label .l-tertiary {
+    margin-top: 0;
+    margin-right: 15px;font-size: 0.9em;
+}
+.l-welcome-head{
+	display: inline-block;
+	line-height: 45px;
+	height: 45px;
+	vertical-align: top;
+	padding-top: 15px;
+	margin-bottom: 15px;
+}
+/* New account modal css ST */
+.modal-body .l-new-trial-form .control-label {
+	max-width: 110px;
+}
+.l-m-newaccount {
+	max-width: 524px;
+}
+.modal-body .l-new-trial-form {
+	margin: 0 auto;
+}
+.modal-body .l-sub-tlt-panel .l-form-head,
+.modal-body .l-new-trial-form  .form-group {
+	margin-left: auto;
+	margin-right: auto;
+	width: 375px;
+}
+.modal-body .l-sub-tlt-panel .l-form-head {
+	padding-left: 15px;
+}
+.modal-body .l-new-trial-form .form-control {
+	max-width: 272px;
+}
+.modal-body .l-new-trial-form .l-search-courses-wrap {
+	max-width: 272px;
+	max-width: 230px;
+	margin-left: 4px;
+}
+.modal-body .l-new-trial-form .form-control:first-child {
+	padding-right: 10px;
+}
+.modal-body .l-new-trial-form button {
+	margin-top: 23px;
+	margin-bottom: 20px;
+}
+.l-taccount-created {
+	margin-top: 25px;
+	margin-bottom: 15px;
+}
+.l-taccount-created .btn{
+	line-height: normal;
+	height: initial;
+	max-width: 190px;
+    word-wrap: break-word;
+	white-space: normal;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.l-acreated-msg {
+	font-size : 16px;
+	text-align: left;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 100%;
+}
+.l-acreated-expire {
+	text-align: center;
+	margin-top: 15px;
+}
+
+/* New account modal css ST */
+/* Trial Account form EN */
+/* Add content step -3 ST */
+.l-play-list-wrapper {
+	position: relative;
+	padding-left: 55px;
+	margin-bottom: 10px;
+	display: block;
+}
+.l-select-courses {
+	position: relative;
+    width: 100%;
+    display: block;
+	height: 40px;
+	line-height: normal;
+	margin-bottom: 30px;
+}
+.l-play-list-wrapper .l-checkbox {
+	top: 220px;
+	left: 0;
+}
+.l-play-list-card {
+	margin:0;
+	padding-bottom: 10px;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	display: block;
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	-ms-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	background: #ffffff;
+}
+.l-play-list-card .l-play-list-header{
+	padding: 35px 45px 10px;
+	color: #0277bd;
+    font-family: 'proxima_novasemibold',sans-serif;
+    font-size: 20px;
+    line-height: normal;
+	border-bottom: 1px solid #dddddd;
+}
+.l-play-list-card .l-play-list-header .l-course-count {
+	padding-top: 5px;
+	padding-left: 0;
+}
+.l-play-list-card .thumbnail {
+	box-shadow: none;
+	width: 100%;
+	position: relative;
+	float: left;
+	display: inline-block;
+	padding-top: 20px;
+}
+
+.l-acc-name {
+	color: #0277bd;
+}
+.l-play-list-card .thumbnail:hover {
+	background: transparent;
+}
+.l-play-list-card .thumbnail .caption {
+	padding: 0;
+	margin-bottom: 10px;
+}
+.l-play-list-card .thumbnail .underline,
+.l-play-list-card .thumbnail .underline:hover {
+	border: 0;
+}
+.l-play-list-card .list-group-item-heading {
+	color: rgba(0,0,0, 0.87);
+	font-size: 16px;
+}
+.l-play-list-card .l-course-content {
+	font-size: 14px;
+}
+
+/* Add individual course modal ST */
+.l-m-course-select {
+	width: 98%;
+	max-width: 1024px;
+}
+.l-m-course-select .l-filter-panel h4 {
+	font-size: 15px;
+	padding: 22px 0 23px 28px;
+}
+.l-m-course-select .l-sort-dd-menu label {
+	display: block;
+}
+.l-m-course-select .l-sort-dd-menu {
+	bottom: 0;
+	height: 100%;
+	min-height: 100%;
+	position: fixed;
+	top: 0;
+	transition: all 0.3s ease-out 0s;
+	-webkit-transition: all 0.3s ease-out 0s;
+	-moz-transition: all 0.3s ease-out 0s;
+	-o-transition: all 0.3s ease-out 0s;
+	width: 100%;
+	z-index: 9999;
+	background: #eeeeee;
+	left: -100%;
+	-webkit-overflow-scrolling: touch;
+}
+.l-m-course-select .l-sort-dd-menu.l-filter-open {
+	left: 0;
+}
+.l-m-course-select .l-sort-dd-menu .dropdown-menu {
+	display: none;
+	box-shadow: none;
+	background: transparent;
+	margin-top: 15px;
+}
+.l-m-course-select .l-sort-dd-menu .l-sort-label,
+.l-m-course-select .l-sort-dd-menu.l-filter-open .dropdown-menu{
+	display: block;
+}
+.l-m-course-select .l-sort-dd-menu .dropdown-menu >li:hover {
+	background: transparent;
+}
+.l-m-course-select .l-sort-dd-menu > .l-search-courses{
+	float: left !important;
+	max-width: 100%;
+}
+.l-m-course-select .l-sort-dd-menu > .l-search-courses > .l-sort-label {
+	padding-left: 52px;
+	padding-top: 2px;
+}
+.l-m-course-select .l-sort-dd-menu > .l-search-courses .table-search	{
+	padding-left: 20px;
+}
+.l-m-course-select .l-sort-dd-menu .dropdown-menu > li > a:hover,
+.l-m-course-select .l-sort-dd-menu .dropdown-menu > li > a:active {
+	background: none;
+	background: transparent;
+}
+.l-m-course-select .l-sort-dd-menu .dropdown-menu > li > a {
+	position: relative;
+	padding: 10px 20px 10px 32px;
+}
+.l-m-course-select .l-sort-dd-menu .l-sort-radio {
+	height: 25px;
+	left: 2px;
+	position: absolute;
+	top: 3px;
+	width: 100%;
+}
+.l-m-course-select .l-sort-toggle {
+	display: none;
+}
+.l-m-course-select .l-sort-dd-menu .table-search {
+	width: 100%;
+	max-width: 100%;
+	margin-top: 19px;
+	position: relative;
+	border-top: 1px solid rgba(0,0,0,0.2);
+	display: block;
+}
+.l-m-course-select .l-filter-panel{
+	width:100%;max-width: 400px;height: 100%;min-height: 100%;position:fixed;top:0;bottom:0;z-index:9999;-webkit-transition: all 0.3s ease-out;-moz-transition: all 0.4s ease-out;-ms-transition: all 0.4s ease-out;transition: all 0.4s ease-out;margin-left:0;margin-left:-30px;-webkit-overflow-scrolling: touch;overflow: hidden;overflow-y: auto;
+}
+.l-m-course-select .l-filter-close {left: 0;z-index: -2; width: 0;}
+.l-m-course-select .l-filter-panel.l-filter-close {left: 30px;}
+.l-m-course-select .l-filter-open{left:30px;max-width: 400px;}
+.l-m-course-select .l-course-list-wrap{ margin-top:0}
+
+/* All courses slider ST */
+.l-m-course-select .modal-body{
+	padding: 0 20px 20px;
+}
+.l-m-course-select .l-search-courses {
+	margin-top: 20px;
+	width: 100%;
+	max-width: 100%;
+}
+.l-m-course-select .l-filter-panel a.l-clear-btn {
+	margin: 16px 13px 0 0;
+}
+.l-m-course-select .l-xs-filter-sort {
+	margin-bottom: 30px;
+}
+.l-m-course-select .l-all-courses-dd .l-search-courses {margin-top: 0;}
+/* All courses slider EN */
+/* Add individual course modal EN */
+/* Add content step -3 EN */
+
+/* Modal common css ST */
+.pt-0 {
+	padding-top: 0;
+}
+.l-mr-25 {
+	margin-right: 25px;
+}
+.modal-content {
+	border-radius: 0;
+}
+.modal-header {
+	border-bottom: 0;
+	padding: 20px 20px 15px;
+}
+.l-form-head {
+	font-size: 18px;
+	color: rgba(0, 0, 0, 0.87);
+	font-size: 20px;
+    font-family: 'proxima_nova_rgbold';
+    line-height: 20px;
+    letter-spacing: 0.01em;
+}
+.close {
+	opacity: 1;
+	color: rgba(0,0,0, 0.38);
+}
+.modal-header .zmdi-close:before {
+	font-size: 34px;
+	line-height: 20px;
+}
+
+.grey-wrapper .info-container {
+    margin: 0 20px 20px;
+}
+
+/* Modal common css EN */
+
+.l-panel-btn{ margin-top:13px}
+
+@media only screen and (max-width : 767px) {
+	.info-container{
+		margin-bottom: 45px;
+	}
+	.l-wizard-progress .l-step {
+		line-height:1;
+	}
+	.l-wizard-progress .l-step .l-node{
+		top: 40px;
+	}
+	.l-wizard-progress .l-step:not(:last-child):before{
+		top: 58px;
+	}
+}
+
+@media only screen and (max-width : 599px) {
+	.l-play-list-wrapper{
+		padding-left:0;
+	}
+	.l-play-list-wrapper .l-checkbox{
+		top: -45px;
+	}
+	.l-new-trial-form .l-search-courses-wrap{
+		margin-left: 0; 
+		margin-right: 0;
+		max-width:100%;
+	}
+	.l-new-trial-form .control-label{ padding-left:0}
+	.l-new-trial-form .form-control, .l-new-trial-form .l-search-courses-wrap .dropdown-menu{
+		max-width:100%;
+	}
+	.l-select-courses{
+		    margin-bottom: 60px;
+	}
+	
+}
+@media only screen and (max-width : 480px) {
+	.l-taccount-action{ padding:0}
+	.l-taccount-action .btn.btn-secondary{width:100%;}
+	.l-taccount-action .btn.btn-secondary.l-mr-25{ margin-right:0;margin-bottom:10px}
+	.l-taccount-action .btn.btn-primary{width:100%;}
+}

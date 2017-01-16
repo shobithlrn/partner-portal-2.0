@@ -1,0 +1,42 @@
+<div class="l-line">
+	<a class="l-remove-form" (click)='closeMe($event)' title="Remove Contact" href="javascript:void(0);" ><i class="zmdi zmdi-delete"></i>Remove</a>
+    <div class="form-group">
+        <label class="col-sm-4 col-xs-12 control-label">Name:<i class="zmdi zmdi-star"></i></label>
+        <div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12">
+            <input type="text" maxlength="40" name="userName" autocomplete="off" placeholder="Name" class="form-control fName" (input)="updateNameField($event)" (blur)="checkforValidName($event)">
+            <span class="text-danger Name_Err"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 col-xs-12 control-label">Email:<i class="zmdi zmdi-star"></i></label>
+        <div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12">
+            <input type="text" maxlength="40" name="userEmail" autocomplete="off" placeholder="Email" class="form-control Email" (input)="updateEmailField($event)" (blur)="checkforValidEmailId($event)">
+            <span class="text-danger Email_Err"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 col-xs-12 control-label">Title:</label>
+        <div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12">
+            <input type="text" maxlength="40" name="userTitle" autocomplete="off" placeholder="Title" class="form-control Title">
+            <span class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 col-xs-12 control-label">Telephone:</label>
+        <div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12">
+            <input type="text" maxlength="40" name="userPhone" autocomplete="off" placeholder="Telephone" class="form-control Telephone">
+            <span class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 col-xs-12 control-label">Department:</label>
+        <div class="l-search-courses-wrap pull-left col-sm-8 col-xs-12">
+            <input type="text" maxlength="40" name="userDept" autocomplete="off" placeholder="Department" class="form-control Department">
+            <span class="text-danger"></span>
+        </div>
+    </div>
+</div>

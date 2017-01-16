@@ -1,0 +1,131 @@
+<h1 class="l-page-tlt">Prospect: {{companyDetails.name}}</h1>
+    <div class="info-container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-7 col-lg-7">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3 col-xs-3 text-left">Name:</label>
+                        <div class="form-control-static col-sm-9 col-xs-9">
+                            {{companyDetails.name}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3 col-xs-3 text-left">Industry:</label>
+                        <div class="form-control-static col-sm-9 col-xs-9">
+                            {{companyDetails.industryType}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3 col-xs-3 text-left">Size:</label>
+                        <div class="form-control-static col-sm-9 col-xs-9">
+                            {{employeerange}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-5 col-lg-5">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3 col-xs-3 text-left">Created:</label>
+                        <div class="form-control-static col-sm-9 col-xs-9">{{companyDetails.createdAt}}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<div class="info-container">
+    <div class="operator-loader-wrap" [ngClass]="{'show-loader':isLoading}">
+        <div class="loader-mask text-center">
+            <div class="showbox">
+                <div class="loader">
+                    <svg class="circular" viewBox="25 25 50 50">
+                        <circle class="path" cx="50" cy="50" r="10" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default l-radius0">
+        <div class="panel-heading l-radius0">
+            <h2 class="panel-title pull-left">Contacts at {{companyDetails.name}}</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <div class="row table-top-row" style="display: none">
+
+                <div class="col-xs-6 col-sm-5 col-md-6 col-lg-9">
+                    <!-- Records drop down ST -->
+
+                    <div class="l-select-dd-wrap pull-left l-records-dd" id="accountRecordsfield" *ngIf="totalCount>=initialdropDownValues[0]">
+                        <input type="text" name="" id="selectedRecordAll" autocomplete="off" placeholder="" class="form-control l-records-field" [value]="dropDownValue" readonly>
+                        <div class="btn-action" data-toggle="dropdown">
+                            <i class="zmdi zmdi-chevron-down" aria-hidden="true"></i>
+                        </div>
+                        <ul class="dropdown-menu dropdown" role="listbox">
+                            <li role="option" [ngClass]="{'active':option==dropDownValue}" *ngFor="#option of dropDownValues" (click)="optionsClick(option)">
+                                <span>{{option}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="l-records-of" *ngIf="totalCount!=0"><span *ngIf="totalCount>=initialdropDownValues[0]">of</span> {{totalCount}} <span class="l-hidden-mobile">user<span *ngIf="totalCount>1">s</span></span></div>
+                </div>
+
+                <!-- Records drop down EN -->
+
+                <div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0 col-lg-3 col-lg-offset-0 pull-right">
+                    <div class="l-search-courses-wrap" id="searchTextfield">
+                        <input type="text" name="searchCourses" id="searchCourses" #val autocomplete="off" class="form-control" placeholder="Search" name="q" [value]='inputSearchTerm' (input)="searchUsers(val.value)">
+                        <div class="btn-action">
+                            <i class="zmdi zmdi-search" aria-hidden="true" *ngIf="!inputSearchTerm"></i>
+                            <i class="zmdi zmdi-close" aria-hidden="true" id="closeSearch" *ngIf="inputSearchTerm" (click)="searchUsers('')"></i>
+                        </div>
+                    </div>
+                    <div class="text-danger" *ngIf="serachDisplayMsg">
+                        Minimum 3 characters required for search
+                    </div>
+                </div>
+            </div>
+
+            <div class="l-table" *ngIf="totalCount>0">
+                <div class="l-table-heading">
+                    <div class="l-table-head">Account Status</div>
+                    <div class="l-table-head">Days Left</div>
+                    <div class="l-table-head">Last Login</div>
+                    <div class="l-table-head">Name/Title</div>
+                    <div class="l-table-head">Contact Info</div>
+                    <div class="l-table-head">Opportunity Owner</div>
+                </div>
+                <div class="l-table-body">
+                    <div class="l-table-row" *ngFor="#user of users ;#i=index">
+                        <div class="l-table-cell" data-content="Account Status">
+                            <span class="label label-{{user.status|lowercase}}">{{user.status}}</span>
+                        </div>
+                        <div class="l-table-cell" data-content="Days Left">{{user.daysLeft}}</div>
+                        <div class="l-table-cell" data-content="Last Login">{{user.lastLoginDate}}</div>
+                        <div class="l-table-cell" data-content="Name/Title"><a href="javascript:void(0);" [title]="user.name">{{user.name}}</a> <br />
+                            {{user.job_title}}</div>
+                        <div class="l-table-cell" data-content="Contact Info"> {{user.email}}<br />
+                            {{user.contact_no}}</div>
+                        <div class="l-table-cell" data-content="Opportunity Owner/Stage">
+                            {{user.assigned_to}} <br />
+                            <!--2 - Solution Presented-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="totalCount==0" class="l-no-user-msg">It’s pretty quiet around here. Why don’t you <a class="link-text" href="javascript:void(0);" (click)="openNewTrialAccountPage()" >create a trial user</a>?</div>
+
+                    <div class="pagination-bottom pull-right" *ngIf="totalCount>0" style="display: none">
+                        <pagination [totalItemsCount]="totalCount" [dropDownValue]="dropDownValue" (currentPageValue)="paginationValueChange($event)"></pagination>
+                    </div>
+
+            <div class="l-panel-btn">
+                <button class="btn btn-primary pull-left disabled" role="button" title="Add Trial Account" disabled>
+                    <i class="zmdi zmdi-plus"></i> Add Trial Account
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,646 @@
+<!-- Featureed Courses -->
+<div class="l-cc-menu-wrapper l-slide-down" id="sub-tab-container"> <!-- Remove l-slide-down Class to close panel on page load -->
+	<!-- Catalogue Menu toggle -->
+    <div class="l-course-catalogue-menu hidden-xs" id="md-cc-menu" role="listbox">
+        <h2 class="l-list-header">Find Topics <i class="zmdi zmdi-menu-down" aria-hidden="true"></i></h2>
+    </div>
+    <!-- Catalog Small device drop down toggle menu -->
+    <div class="l-all-courses-dd" id="xs-cc-menu">
+        <form class="form-inline l-search-courses" name="list-courses">
+            <div class="table-search">
+                <div class="input-group" id="allCourses">
+                    <input type="text" name="allCourses" id="allCoursesTxt" autocomplete="off" placeholder="All Courses" class="form-control l-radius0 all-courses-field" readonly>
+                    <div class="input-group-btn" data-toggle="dropdown">
+                        <button type="submit" class="btn btn-default l-radius0">
+                            <i class="zmdi zmdi-chevron-down pull-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- /Catalogue Small device drop down toggle menu -->
+	<!-- /Catalogue Menu toggle -->
+    <!-- All courses -->
+    <div class="l-all-courses" id="l-all-courses">
+	<!-- <div class="l-featured-courses" id="featuredList" style="display:none;">
+		<div class="l-list-header">Featured Courses</div>
+		<div class="row l-mb-0">
+		  <span class="col-xs-12 col-sm-6 col-md-3"><a href="javascript:;" (click)="getTopLRNCourses()" [ngClass]="{'active':recentType==3}">Top LRN Courses</a></span>
+		  <span class="col-xs-12 col-sm-6 col-md-3"><a href="javascript:;" (click)="getRecentAddedCourses()" [ngClass]="{'active':recentType==1}">Recently Added</a></span>
+		  <span class="col-xs-12 col-sm-6 col-md-3"><a href="javascript:;" (click)="getRecentUpdatedCourses()" [ngClass]="{'active':recentType==2}">Recently Updated</a></span>
+		</div>
+	</div> -->
+
+	<div class="l-featured-courses l-topics-list" id="topicsList"> <!-- add style="display:none" to "id:topicsList" tag to  hide featured course panel on page load-->
+    <div class="l-list-header">Topics</div>
+    <!-- topicList -->
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-md-6">
+		    <span class="l-special-list"><a href="javascript:;" (click)="getTopLRNCourses()" [ngClass]="{'active':recentType==3}"><i class="zmdi zmdi-star-circle"></i> Top LRN Courses</a></span>
+            <span *ngFor="#list of courseData.topicList.displayCategory1" ><a href="javascript:;" (click)="getCourseAsPerTopic($event.target.innerText)" [ngClass]="{'active':_topicName==list}">{{ list }}</a></span>
+          </div>
+          <div class="col-md-6">
+            <span *ngFor="#list of courseData.topicList.displayCategory2" ><a href="javascript:;" (click)="getCourseAsPerTopic($event.target.innerText)" [ngClass]="{'active':_topicName==list}">{{ list }}</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-md-6">
+            <span *ngFor="#list of courseData.topicList.displayCategory3" ><a href="javascript:;" (click)="getCourseAsPerTopic($event.target.innerText)" [ngClass]="{'active':_topicName==list}">{{ list }}</a></span>
+
+          </div>
+          <div class="col-md-6">
+            <span *ngFor="#list of courseData.topicList.displayCategory4" ><a href="javascript:;" (click)="getCourseAsPerTopic($event.target.innerText)" [ngClass]="{'active':_topicName==list}">{{ list }}</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of topicList -->
+
+  </div>
+    </div>
+    <!-- /All courses -->
+    <div class="l-toggle-arrow hidden-xs">
+    <span class="l-arrow-circle"><i class="zmdi zmdi-chevron-down"></i></span>
+  </div>
+</div>
+<!-- / Featured Courses -->
+
+<div class="l-xs-filter-sort visible-xs">
+    <a href="javascript:;" title="Filter" class="btn l-tertiary" id="filterTab">Filter</a>
+    <a href="javascript:;" title="Sort" class="btn l-tertiary" id="sortTab">Sort By</a>
+</div>
+
+<div class="row l-course-list-wrap">
+            <div class="col-md-3">
+                <!-- Browse By Subtopic Panel ST -->
+                <div class="l-sub-topic-panel" id="subtopicPanel" style="display:none;">
+                    <h4>BROWSE BY SUBTOPIC</h4>
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0);" title="All subtopics">All subtopics</a>
+                            <span class="l-course-count">72</span>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" title="Ethical Performance">Ethical Performance</a>
+                            <span class="l-course-count">22</span>
+                        </li>
+                        <li><a href="javascript:void(0);" title="FAR">FAR</a><span class="l-course-count">20</span></li>
+                        <li><a href="javascript:void(0);" title="General">General</a><span class="l-course-count">10</span></li>
+                        <li><a href="javascript:void(0);" title="Lobbying">Lobbying</a><span class="l-course-count">20</span></li>
+                    </ul>
+                </div>
+                <!-- Browse By Subtopic Panel EN -->
+
+                <!-- Filter Panel ST -->
+                <div class="l-filter-panel l-filter-close" id="filterPanel">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="CloseFilter" class="visible-xs l-filter-close-arrow">
+                                <i class="zmdi zmdi-chevron-left"></i>
+                            </div>
+                            <h3 class="pull-left title">
+                                FILTER COURSES
+                            </h3>
+                            <a id="filteringDone" class="btn btn-default l-clear-btn pull-right visible-xs" title="Done">Done</a>
+                            <a id="clearAll" class="btn btn-default l-clear-btn pull-right" title="Clear All" (click)="clearAllFilters(true)" *ngIf="showHideFilters()">Clear All</a>
+                        </div>
+                    </div>
+                    <div class="row l-filter-labels l-filter-mobile">
+                    <div class="col-md-12">
+                        <span class="l-btn-filter" *ngFor="#courseType of globalCourseObject.filters.course_type">
+                        {{courseType}} <span class="l-close-filter" (click)="onFilterSelected(courseType,'course_type')"><i class="zmdi zmdi-close"></i></span>
+                        </span>
+                        <span class="l-btn-filter" *ngFor="#duration of globalCourseObject.filters.duration">
+                            {{courseData.durationList.keys[duration]}} <span class="l-close-filter" (click)="onFilterSelected(duration,'duration')"><i class="zmdi zmdi-close"></i></span>
+                        </span>
+                        <span class="l-btn-filter" *ngFor="#media of globalCourseObject.filters.media">
+                            {{media}} <span class="l-close-filter" (click)="onFilterSelected(media,'media')"><i class="zmdi zmdi-close"></i></span>
+                        </span>
+                        <span class="l-btn-filter" *ngFor="#industry of globalCourseObject.filters.industry">
+                            {{industry}} <span class="l-close-filter" (click)="onFilterSelected(industry,'industry')"><i class="zmdi zmdi-close"></i></span>
+                        </span>
+                        <span class="l-btn-filter" *ngFor="#region of globalCourseObject.filters.region">
+                            {{region}} <span class="l-close-filter" (click)="onFilterSelected(region,'region')"><i class="zmdi zmdi-close"></i></span>
+                        </span>
+                        <span class="l-btn-filter" *ngFor="#audience of globalCourseObject.filters.audience">
+                            {{audience}} <span class="l-close-filter" (click)="onFilterSelected(audience,'audience')"><i class="zmdi zmdi-close"></i></span>
+                        </span>
+                        <span class="l-btn-filter" *ngIf="globalCourseObject.filters.release[0].length>0 && globalCourseObject.filters.release[1].length>0">
+                            {{globalCourseObject.filters.release[0]}} To {{globalCourseObject.filters.release[1]}}<span class="l-close-filter" (click)="clearReleaseDateFilters()"><i class="zmdi zmdi-close"></i></span>
+                        </span>
+                        <span class="l-btn-filter" *ngIf="globalCourseObject.filters.mobile_ready.length==1">
+                            HTML5 Courses<span class="l-close-filter" (click)="onMobileReady()"><i class="zmdi zmdi-close"></i></span>
+                        </span>
+                        <button class="l-clear-all" (click)="clearAllFilters(true)" *ngIf="showHideFilters()">Clear All</button>
+                    </div>
+                </div>
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0);" title="Course Type">
+                                Course Type <i class="zmdi zmdi-plus"></i>
+                            </a>
+                            <div class="l-filter-options l-close-panel">
+                                <ul class="l-filter-list l-filter-checkbox-list">
+                                    <li *ngFor="#courseType of courseData.courseTypeList.keys, #index=index">
+                                        <label>
+                                            <div class="input-md l-checkbox">
+                                                <input type="checkbox" [checked]="globalCourseObject.filters.course_type.indexOf(courseType)!=-1" (click)="onFilterSelected(courseType,'course_type')">
+                                                <label class="f-label"></label>
+                                            </div>
+                                            {{courseType}}
+                                            <span class="pull-right">{{courseData.courseTypeList.values[index]}}</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li *ngIf="false">
+                            <a href="javascript:void(0);" title="Language">
+                                Language <i class="zmdi zmdi-plus"></i>
+                            </a>
+                            <div class="l-filter-options l-close-panel">
+                                <ul class="l-filter-list l-filter-checkbox-list">
+                                    <li *ngFor="#language of courseData.languageList.keys, #index=index">
+                                        <label for="check6">
+                                            <div class="input-md l-checkbox">
+                                                <input type="checkbox" class="" id="check6">
+                                                <label class="f-label" for="" id=""></label>
+                                            </div>
+                                            {{language}}
+                                            <span class="pull-right">{{courseData.languageList.values[index]}}</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- Format -->
+                        <li>
+                        <a href="javascript:void(0);" title="Format">Course Format <i class="zmdi zmdi-plus"></i></a>
+                            <div class="l-filter-options l-close-panel">
+                                <div class="panel-body">
+                                    <div class="l-format-txt" *ngIf="globalCourseObject.filters.mobile_ready.length==1">Showing latest mobile optimized HTML5 courses only.</div>
+                                    <div class="l-switch-srapper">
+                                        <label class="l-switch">
+                                            <input type="checkbox" [checked]="globalCourseObject.filters.mobile_ready.length==2" (click)="onMobileReady()">
+                                            <div class="l-slider l-round"></div>
+                                        </label>
+                                        <span class="">Include legacy Flash Courses</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- /Format -->
+                        <!-- Audio/Video -->
+                        <li>
+                            <a href="javascript:void(0);" title="Audio/Video">
+                                Audio/Video <i class="zmdi zmdi-plus"></i>
+                            </a>
+                            <div class="l-filter-options l-close-panel">
+                                <div class="panel-body">
+                                    <ul class="l-filter-list l-filter-checkbox-list">
+                                        <li *ngFor="#media of courseData.mediaList.keys, #index=index" >
+                                            <label>
+                                                <div class="input-md l-checkbox">
+                                                    <input name="{{media}}" type="checkbox" class="" [checked]="globalCourseObject.filters.media.indexOf(media)!=-1" (click)="onFilterSelected(media,'media')">
+                                                    <label class="f-label" for="" id=""></label>
+                                                </div>
+                                                <i class="zmdi" [ngClass]="{'zmdi-volume-up':media=='audio','zmdi-videocam':media=='video'}"></i>
+                                                <span class="pull-right">{{courseData.mediaList.values[index]}}</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- /Audio/Video -->
+                        <!-- Duration -->
+                        <li>
+                            <a href="javascript:void(0);" title="Duration">
+                                Duration <i class="zmdi zmdi-plus"></i>
+                            </a>
+                            <div class="l-filter-options l-close-panel">
+                                <div class="panel-body">
+                                    <ul class="l-filter-list l-filter-checkbox-list">
+                                        <li *ngFor="#durationEle of courseData.durationList.keys, #index=index">
+                                            <label>
+                                                <div class="input-md l-checkbox">
+                                                    <input type="checkbox" (click)="onFilterSelected(index,'duration')" class="" id="check24" [checked]="globalCourseObject.filters.duration.indexOf(index)!=-1">
+                                                    <label class="f-label" for="" id=""></label>
+                                                </div>
+                                                {{durationEle}}<span class="pull-right">{{courseData.durationList.values[index]}}</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- /Duration -->
+                        <!-- Release Date -->
+                        <li>
+                            <a href="javascript:void(0);" title="Release Date">
+                                Release Date <i class="zmdi zmdi-plus"></i>
+                            </a>
+                            <div class="l-filter-options l-close-panel">
+                                <div class="panel-body">
+                                    <div class="l-release-date">
+                                        <span>From: </span>
+                                        <input type="text" name="fromDate" id="releaseStartDate" autocomplete="off" placeholder="mm/dd/yyyy" class="form-control l-radius0 l-date-txtbox" readonly (click)="showDatepicker('start')" [value]="globalCourseObject.filters.release[0]">
+                                        <span class="hide">Tue, Mar 01 2016</span>
+                                        <i class="zmdi zmdi-calendar" (click)="showDatepicker('start')"></i>
+                                        <p class="text-danger" *ngIf="isDateSelected && !globalCourseObject.filters.release[0]">Please Select Start Date</p>
+                                    </div>
+
+                                    <div class="l-release-date l-last">
+                                        <span>To: </span>
+                                        <input type="text" name="" id="releaseEndDate" autocomplete="off" placeholder="mm/dd/yyyy" class="form-control l-radius0 l-date-txtbox" readonly (click)="showDatepicker('end')" [value]="globalCourseObject.filters.release[1]">
+                                        <span class="hide">Tue, Mar 06 2016</span>
+                                        <i class="zmdi zmdi-calendar" (click)="showDatepicker('end')"></i>
+                                        <p class="text-danger" *ngIf="isDateSelected && !globalCourseObject.filters.release[1]">Please Select End Date</p>
+                                    </div>
+                                    <button class="l-clear-all l-txt-link" (click)="clearReleaseDateFilters()" *ngIf="globalCourseObject.filters.release[1] && globalCourseObject.filters.release[0]">Clear Date</button>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- /Release Date -->
+                        <!-- Industry -->
+                        <li>
+                            <a href="javascript:void(0);" title="Industry">
+                                Industry <i class="zmdi zmdi-plus"></i>
+                            </a>
+                            <div class="l-filter-options l-close-panel">
+                                <div class="panel-body">
+                                    <ul class="l-filter-list l-filter-checkbox-list">
+                                        <li *ngFor="#industry of courseData.industryList.keys, #index=index">
+                                            <label>
+                                                <div class="input-md l-checkbox">
+                                                    <input type="checkbox" class="" [checked]="globalCourseObject.filters.industry.indexOf(industry)!=-1" (click)="onFilterSelected(industry,'industry')">
+                                                    <label class="f-label" for="" id=""></label>
+                                                </div>
+                                                {{industry}}<span class="pull-right">{{courseData.industryList.values[index]}}</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- /Industry -->
+                        <!-- Region -->
+                        <li>
+                            <a href="javascript:void(0);" title="Region">
+                                Region <i class="zmdi zmdi-plus"></i>
+                            </a>
+                            <div class="l-filter-options l-close-panel">
+                                <div class="panel-body">
+                                    <ul class="l-filter-list l-filter-checkbox-list">
+                                        <li *ngFor="#region of courseData.regionList.keys, #index=index">
+                                            <label>
+                                                <div class="input-md l-checkbox">
+                                                    <input type="checkbox" class="" [checked]="globalCourseObject.filters.region.indexOf(region)!=-1" (click)="onFilterSelected(region,'region')">
+                                                    <label class="f-label" for="" id=""></label>
+                                                </div>
+                                                {{region}}<span class="pull-right">{{courseData.regionList.values[index]}}</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- / Region -->
+                        <!-- Target Employee -->
+                        <li>
+                            <a href="javascript:void(0);" title="Target Employee">
+                                Target Employee <i class="zmdi zmdi-plus"></i>
+                            </a>
+                            <div class="l-filter-options l-close-panel">
+                                <div class="panel-body">
+                                    <ul class="l-filter-list l-filter-checkbox-list">
+                                        <li *ngFor="#audience of courseData.audienceList.keys, #index=index">
+                                            <label>
+                                                <div class="input-md l-checkbox">
+                                                    <input type="checkbox" class="" [checked]="globalCourseObject.filters.audience.indexOf(audience)!=-1" (click)="onFilterSelected(audience,'audience')">
+                                                    <label class="f-label" for="" id=""></label>
+                                                </div>
+                                                {{audience}}<span class="pull-right">{{courseData.audienceList.values[index]}}</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- /Target Employee -->
+                        <!-- Regulation Type -->
+                        <li *ngIf="false">
+                            <a href="javascript:void(0);" title="Regulation Type">
+                                Regulation Type <i class="zmdi zmdi-plus"></i>
+                            </a>
+                            <div class="l-filter-options l-close-panel">
+                                <div class="panel-body">
+                                    <ul class="l-filter-list l-filter-checkbox-list">
+                                        <li>
+                                            <label for="check48">
+                                                <div class="input-md l-checkbox">
+                                                    <input type="checkbox" class="" id="check48">
+                                                    <label class="f-label" for="" id=""></label>
+                                                </div>
+                                                Type - 1
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label for="check49">
+                                                <div class="input-md l-checkbox">
+                                                    <input type="checkbox" class="" id="check49">
+                                                    <label class="f-label" for="" id=""></label>
+                                                </div>
+                                                Type - 2
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label for="check50">
+                                                <div class="input-md l-checkbox">
+                                                    <input type="checkbox" class="" id="check50">
+                                                    <label class="f-label" for="" id=""></label>
+                                                </div>
+                                                Type - 3
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- /Regulation Type -->
+                    </ul>
+                </div>
+                <!-- Filter Panel EN -->
+            </div>
+        <div class="col-md-9" style="position: relative">
+        <!-- <div class="operator-loader-wrap" >
+              <div class="loader-mask text-center">
+                <div class="showbox">
+                  <div class="loader" *ngIf="isLoading">
+                    <svg class="circular" viewBox="25 25 50 50">
+                      <circle class="path" cx="50" cy="50" r="10" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                    </svg>
+                  </div>
+                </div>
+            </div>
+        </div> -->
+		<div class="showbox" *ngIf="isLoading">
+			<div class="loader">
+				<svg class="circular" viewBox="25 25 50 50">
+					<circle class="path" cx="50" cy="50" r="10" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+				</svg>
+			</div>
+		</div>
+          <div class="row">
+            <div class="col-md-12 rel">
+              <ul class="breadcrumb" id="breadCrumb">
+                <li [ngClass]="{'active':_topicName.length==0 && featuredText.length==0,'':_topicName.length>0 || featuredText.length>0}" id="bcAllcourses">
+                  <a *ngIf="_topicName.length==0 && featuredText.length==0" href="javascript:void">All Courses</a><a *ngIf="_topicName.length>0 || featuredText.length>0" (click)="getAllCourses()">All Courses</a> <!-- <span *ngIf="!_topicName && !featuredText" class="l-course-count">{{courseData.totalCoursesCount}}</span> -->
+                </li>
+
+                <li [ngClass]="{'active':_topicName.length==0,'':_topicName>0}" id="bcTopic" *ngIf="featuredText && featuredText=='Recently Added'" (click)="getRecentAddedCourses()">
+                  <a href="javascript:;">{{featuredText}}</a>
+                  <!-- <span class="l-course-count" *ngIf="featuredText && !_topicName">{{courseData.totalCoursesCount}}</span> -->
+                </li>
+                <li [ngClass]="{'active':_topicName.length==0,'':_topicName>0}" id="bcTopic" *ngIf="featuredText && featuredText=='Recently Updated'" (click)="getRecentUpdatedCourses()">
+                  <a href="javascript:;">{{featuredText}}</a>
+                  <!-- <span class="l-course-count" *ngIf="featuredText && !_topicName">{{courseData.totalCoursesCount}}</span> -->
+                </li>
+                <li [ngClass]="{'active':_topicName.length==0,'':_topicName>0}" id="bcTopic" *ngIf="featuredText && featuredText=='Top LRN Courses'" (click)="getTopLRNCourses()">
+                  <a href="javascript:;">{{featuredText}}</a>
+                  <!-- <span class="l-course-count" *ngIf="featuredText && !_topicName">{{courseData.totalCoursesCount}}</span> -->
+                </li>
+                <li class="active" id="bcTopic" *ngIf="_topicName">
+                  <a href="javascript:;">{{_topicName}}</a>
+                  <!-- <span class="l-course-count" *ngIf="_topicName">{{courseData.totalCoursesCount}}</span> -->
+                </li>
+                <li class="" id="bcsubTopic" style="display:none;">
+                  <a href="javascript:;">Ethical Performance</a> <span class="l-course-count">20</span>
+                </li>
+              </ul>
+			  <div class="l-result-panel"><span class="l-course-count">{{totalFilteredCourseCount}}</span> Results </div>
+            </div>
+          </div>
+
+          <!-- ----------------------- -->
+          <div class="row l-filter-labels">
+            <div class="col-md-12">
+                    <div class="l-btn-filter" *ngFor="#courseType of globalCourseObject.filters.course_type">
+                        {{courseType}} <span class="l-close-filter" (click)="onFilterSelected(courseType,'course_type')" title="Remove Filter"><i class="zmdi zmdi-close"></i></span>
+                    </div>
+                    <div class="l-btn-filter" *ngFor="#duration of globalCourseObject.filters.duration">
+                        {{courseData.durationList.keys[duration]}} <span class="l-close-filter" (click)="onFilterSelected(duration,'duration')" title="Remove Filter"><i class="zmdi zmdi-close"></i></span>
+                    </div>
+                    <div class="l-btn-filter" *ngFor="#media of globalCourseObject.filters.media">
+                        {{media}} <span class="l-close-filter" (click)="onFilterSelected(media,'media')" title="Remove Filter"><i class="zmdi zmdi-close"></i></span>
+                    </div>
+                    <div class="l-btn-filter" *ngFor="#industry of globalCourseObject.filters.industry">
+                        {{industry}} <span class="l-close-filter" (click)="onFilterSelected(industry,'industry')" title="Remove Filter"><i class="zmdi zmdi-close"></i></span>
+                    </div>
+                    <div class="l-btn-filter" *ngFor="#region of globalCourseObject.filters.region">
+                        {{region}} <span class="l-close-filter" (click)="onFilterSelected(region,'region')" title="Remove Filter"><i class="zmdi zmdi-close"></i></span>
+                    </div>
+                    <div class="l-btn-filter" *ngFor="#audience of globalCourseObject.filters.audience">
+                        {{audience}} <span class="l-close-filter" (click)="onFilterSelected(audience,'audience')" title="Remove Filter"><i class="zmdi zmdi-close"></i></span>
+                    </div>
+                    <div class="l-btn-filter" *ngIf="globalCourseObject.filters.release[0].length>0 && globalCourseObject.filters.release[1].length>0">
+                        {{globalCourseObject.filters.release[0]}} To {{globalCourseObject.filters.release[1]}} <span class="l-close-filter" (click)="clearReleaseDateFilters()" title="Remove Filter"><i class="zmdi zmdi-close"></i></span>
+                    </div>
+                    <div class="l-btn-filter" *ngIf="globalCourseObject.filters.mobile_ready.length==1">
+                        HTML5 Courses <span class="l-close-filter" (click)="onMobileReady()" title="Remove Filter"><i class="zmdi zmdi-close"></i></span>
+                    </div>
+
+              <button class="l-clear-all" (click)="clearAllFilters(true)" *ngIf="showHideFilters()" title="Clear All Filter">Clear All</button>
+            </div>
+          </div>
+          <!-- -------------------------- -->
+          <div class="row">
+            <div class="col-md-12 l-filter-sort rel">
+                <!-- filter options -->
+                <div class="l-filter-options">
+                  <!--   <button class="l-check-course" id="checkCourse">
+                        <i class="zmdi zmdi-minus" aria-hidden="true"></i>
+                    </button> -->
+                    <div class="input-md l-restore-course">
+                        <input type="checkbox" class="checked-item chechk-action" name="" id="chechk-action">
+                        <label class="f-label" for="" id=""></label>
+                    </div>
+                    <div class="l-bm-dd l-bm-btn-holds">
+                        <button class="" data-toggle="dropdown">
+                            <i class="zmdi zmdi-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown l-sort-panel">
+                            <li>
+                                <a href="javascript:;" class="" id="checkedAllitem">All</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="" id="uncheckAllitem" class="active">None</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" id="Bookmarked">Bookmarked</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" id="notBookmarked">Not Bookmarked</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                            <span class="" id="actionMenu" style="display:none;">
+                            <button class=""><i class="zmdi zmdi-share" aria-hidden="true"></i></button>
+							<span class="l-playlist-dd l-bm-dd">
+								<button class="l-list-dd-btn" data-toggle="dropdown">
+								<i class="zmdi zmdi-format-list-bulleted" aria-hidden="true"></i><i class="zmdi zmdi-chevron-down"></i>
+								</button>
+								<ul class="dropdown-menu dropdown">
+									<li>
+										<a href="javascript:;" class="">Prospects Starter Playlist</a>
+									</li>
+									<li>
+										<a href="javascript:;">Playlist for Pharma</a>
+									</li>
+									<li>
+										<a href="javascript:;">Some Other List</a>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<a href="javascript:;">Create New Playlist</a>
+									</li>
+								</ul>
+							</span>
+                            <button class=""><i class="zmdi zmdi-bookmark" aria-hidden="true"></i></button>
+                            <button class=""><i class="zmdi zmdi-collection-pdf" aria-hidden="true"></i></button>
+                        </span>
+                </div>
+
+
+              <!-- Sort and Toggle list and grid view -->
+              <div class="btn-group pull-right l-toggle-btn">
+                  <div class="l-sort-dd pull-left l-sort-dd-menu l-filter-close" id="sortBy">
+                  <div class="form-inline l-search-courses pull-right">
+
+                      <div class="l-sort-label">
+
+                          <div id="closeSort" class="visible-xs l-filter-close-arrow">
+                              <i class="zmdi zmdi-chevron-left" aria-hidden="true"></i>
+                          </div>Sort by:
+                      </div>
+                        <!-- Sort field -->
+                      <div class="table-search">
+                          <div class="input-group" id="">
+                              <div class="l-sort-toggle" data-toggle="dropdown">
+                                  <!--
+                                  <input type="text" name="sortCourses" id="sortCourses1" autocomplete="off" placeholder="Topic by Last Update" readonly class="form-control l-radius0 hide">
+                                  -->
+                                  <div  id="sortCourses" class="form-control l-radius0">
+                                      {{sortText}}
+                                  </div>
+                                  <div class="input-group-btn">
+                                      <button type="submit" class="btn btn-default l-radius0">
+                                          <i class="zmdi zmdi-chevron-down" aria-hidden="true"></i>
+                                      </button>
+                                  </div>
+                              </div>
+                              <!-- Drop down list for all Courses-->
+                              <ul class="dropdown-menu dropdown sort-dd" id="sort-dd" *ngIf="!_topicName">
+                                  <li [ngClass]="{'active':sortType=='updated'}">
+                                      <a href="javascript:;" class="" (click)="sortCourses('updated', 'desc', 'Most recently updated')">
+                                          <label for="check1">
+                                              <div class="input-md l-sort-radio">
+                                                  <input type="radio" class="" id="check1" name="sort">
+                                                  <label class="f-label" for="" id=""></label>
+                                              </div>
+                                          </label>
+                                          Most recently updated
+                                      </a>
+                                  </li>
+                                  <li [ngClass]="{'active':sortType=='topic'}">
+                                      <a href="javascript:;" (click)="sortCourses('main_topic', 'asc', 'Most recently updated by topic')">
+                                          <label for="check2">
+                                              <div class="input-md l-sort-radio">
+                                                  <input type="radio" class="" id="check2" name="sort">
+                                                  <label class="f-label" for="" id=""></label>
+                                              </div>
+                                          </label>
+                                          Most recently updated by topic
+                                      </a>
+                                  </li>
+                              </ul>
+                              <!-- End of drop down list for all Courses-->
+                              <!-- Drop down list for topics-->
+                              <ul class="dropdown-menu dropdown sort-dd" id="sort-dd" *ngIf="_topicName">
+                                  <li>
+                                      <a href="javascript:;" class="" (click)="sortCourses('updated','desc', 'Most recently updated')">
+                                          <label for="check1">
+                                              <div class="input-md l-sort-radio">
+                                                  <input type="radio" class="" id="check1" name="sort">
+                                                  <label class="f-label" for="" id=""></label>
+                                              </div>
+                                          </label>
+                                          Most recently updated
+                                      </a>
+                                  </li>
+                              </ul>
+                              <!--End of drop down list for topics-->
+
+                          </div>
+                      </div>
+
+
+                      <!--  End of sort field -->
+                  </div>
+              </div>
+
+                <div class="pull-left">
+                  <a
+                    href="javascript:;"
+                    id="list"
+                    class="btn btn-sm active-btn"
+                    [ngClass]="{'active-btn':isViewType=='list'}"
+                    (click)="onGridListViewClick('list')" title="Switch to List View">
+                    <i class="zmdi zmdi-view-agenda" aria-hidden="true"></i>
+                  </a>
+                  <a href="javascript:;"
+                     id="grid"
+                     class="btn btn-sm"
+                     [ngClass]="{'active-btn':isViewType=='grid'}"
+                     (click)="onGridListViewClick('grid')" title="Switch to Grid View">
+                    <i class="zmdi zmdi-apps" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+              <!-- / Sort and Toggle list and grid view -->
+            </div>
+          </div>
+          <!-- / End of Sort and Toggle list and grid view -->
+
+          <div class="l-sub-tab-container">
+        <div class="info-container l-sub-tab-panel">
+          <!-- <div class="l-sub-tlt-panel">
+            <h2 class="l-sub-tlt pull-left"> Results <span class="l-course-count">{{totalFilteredCourseCount}}</span></h2>
+          </div> -->
+        <h1 *ngIf="totalFilteredCourseCount==0">No Courses found for this search</h1>
+         <div class="clearfix"></div>
+         <!-- Course listing -->
+          <div id="products" class="row list-group">
+              <course *ngFor="#course of allcourses, #index=index" [course-data]="course" [index]="index" [componentName]="'course-catalog'"></course>
+			  <div class="col-xs-12" *ngIf="isLazyload">
+				  <div class="loader">
+					  <svg class="circular" viewBox="25 25 50 50">
+						  <circle class="path" cx="50" cy="50" r="10" fill="none" stroke-width="2" stroke-miterlimit="100"/>
+					  </svg>
+				  </div>
+			  </div>
+              <!-- <h1 *ngIf="allcourses.length==0" style="color:red;">No data Found</h1> -->
+              <a style="display: none" class="pull-right" id="showmore" (click)="loadMoreCourses()" *ngIf="globalCourseObject.start+globalCourseObject.rows<totalFilteredCourseCount">Show More...</a>
+          </div>
+        <!-- / Course listing -->
+        </div>
+    </div>
+        </div>
+    </div>

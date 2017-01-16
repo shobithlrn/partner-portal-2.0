@@ -1,0 +1,150 @@
+<!-- <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" [hidden]="isLoggedin">
+	<div class="container top-nav-bar">
+		<div class="navbar-header">
+			<a class="navbar-brand site-logo" [routerLink]=" ['Login'] ">Catalyst</a> 
+		</div>
+		<ul class="login-header-nav nav navbar-nav navbar-right hidden-xs" [hidden]="isLoggedin">
+			<li class="l-beta-txt">
+			Beta release. For internal use only.
+			</li>
+			<li>
+				<a href="/api/user/login-lrn-adfs" class="btn l-secondary lrnColleagueLogin_open" title="Login as LRN Colleague">
+					<i class="zmdi zmdi-square-right" aria-hidden="true"></i> <span class="">LRN Colleague</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="container-fluid l-main-nav-bar text-center login-header-nav"> 
+	<span class="l-beta-txt l-visible-tab">
+			Beta release. For internal use only.</span>
+		<a tabindex="5" title="LRN Colleague" class="btn l-secondary lrnColleagueLogin_open mobile" href="/api/user/login-lrn-adfs">
+			<i aria-hidden="true" class="zmdi zmdi-square-right"></i> <span class="">LRN Colleague</span>
+		</a>
+	</div>
+</div>
+
+<div class="navbar navbar-inverse navbar-fixed-top l-loggedin-nav" role="navigation" [hidden]="!isLoggedin">
+	<div class="container top-nav-bar">
+		<div class="navbar-header">
+		<a class="navbar-brand site-logo" [routerLink]=" ['Dashboard'] " (click)="onLogoClick()">Catalyst</a> </div>
+		<ul class="l-top-nav">
+			<li class="l-beta-txt">
+			Beta release. For internal use only.
+			</li>
+			<li><a href="#tour"><i class="zmdi zmdi-search"></i></a></li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<i class="zmdi zmdi-account-circle l-fl"></i>
+					<i class="zmdi zmdi-chevron-down l-fl"></i>
+				</a>
+				<ul class="dropdown-menu">
+				  <li><a href="#" title="Profile">{{name}}</a></li>
+				  <li><a href="#" title="Settings">Settings</a></li>
+				  <li><a href="javascript:void(0);" (click) ="logoutUser()" title="Log Out">Log Out</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="container-fluid l-main-nav-bar text-center">
+		<h1 class="l-page-tlt hidden-lg hidden-md hidden-sm">{{displayTextMobileView}}</h1>
+			<a class="navbar-toggle collapsed l-burger-nav" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navbar">
+				<span class="icon-bar top-bar"></span>
+				<span class="icon-bar middle-bar"></span>
+				<span class="icon-bar bottom-bar"></span>
+			</a>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav l-navbar-sm">
+					<li [ngClass]="{'active':tabName=='dashboard'}"><a [routerLink]=" ['Dashboard'] " (click)="tabChange('dashboard')"><i class="zmdi zmdi-view-dashboard"></i>Dashboard</a></li>
+					<li *ngIf="userRole!=='trial'" [ngClass]="{'active':tabName=='prospectsandpartners'}" (click)="tabChange('prospectsandpartners')"><a [routerLink]=" ['ProspectPartners'] "><i class="zmdi zmdi-accounts"></i>Prospects & Partners</a></li>
+					<li [ngClass]="{'active':tabName=='coursecatalog'}" (click)="tabChange('coursecatalog')"><a [routerLink]=" ['CourseCatalog'] "><i class="zmdi zmdi-library"></i>Library</a></li>
+					<li [ngClass]="{'active':tabName=='mycontent'}" (click)="tabChange('mycontent')" disabled="true" class="l-deactive"><a title="Coming Soon!"><i class="zmdi zmdi-folder"></i>My Content</a></li>
+					<li disabled="true" class="l-deactive"><a title="Coming Soon!"><i class="zmdi zmdi-folder"></i>My Content</a></li>
+					<li class="hidden-lg hidden-md hidden-sm l-extra-nav">
+						<ul>
+							<li><a href="javascript:void(0);" title="Settings">Settings</a></li>
+							<li><a href="javascript:void(0);" title="Contact">Contact</a></li>
+							<li><a href="javascript:void(0);" title="Terms & Conditions">Terms & Conditions</a></li>
+							<li class="l-pdf-btn"><a href="javascript:void(0);" title="Course Catalog PDF" class="btn tertiary"><i class="zmdi zmdi-collection-pdf"></i> Course Catalog PDF</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+	  </div>
+</div>
+
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" [hidden]="isLoggedin">
+	<div class="container top-nav-bar">
+		<div class="navbar-header">
+			<a class="navbar-brand site-logo" [routerLink]=" ['Login'] ">Catalyst</a> 
+		</div>
+		<ul class="login-header-nav nav navbar-nav navbar-right hidden-xs" [hidden]="isLoggedin">
+			<li class="l-beta-txt">
+			Beta release. For internal use only.
+			</li>
+			<li>
+				<a href="/api/user/login-lrn-adfs" class="btn l-secondary lrnColleagueLogin_open" title="Login as LRN Colleague">
+					<i class="zmdi zmdi-square-right" aria-hidden="true"></i> <span class="">LRN Colleague</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="container-fluid l-main-nav-bar text-center login-header-nav"> 
+	<span class="l-beta-txt l-visible-tab">
+			Beta release. For internal use only.</span>
+		<a tabindex="5" title="LRN Colleague" class="btn l-secondary lrnColleagueLogin_open mobile" href="/api/user/login-lrn-adfs">
+			<i aria-hidden="true" class="zmdi zmdi-square-right"></i> <span class="">LRN Colleague</span>
+		</a>
+	</div>
+</div>
+ -->
+<div class="navbar navbar-inverse navbar-fixed-top l-loggedin-nav" role="navigation">
+	<div class="container top-nav-bar">
+		<div class="navbar-header">
+		<a class="navbar-brand site-logo">Catalyst</a> </div>
+		<ul class="l-top-nav">
+			<li class="l-beta-txt">
+			Beta release. For internal use only.
+			</li>
+			<!-- <li><a href="#tour"><i class="zmdi zmdi-search"></i></a></li> -->
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<i class="zmdi zmdi-account-circle l-fl"></i>
+					<i class="zmdi zmdi-chevron-down l-fl"></i>
+				</a>
+				<ul class="dropdown-menu">
+				  <li><a href="#" title="Profile">{{name}}</a></li>
+				  <li><a href="#" title="Settings">Settings</a></li>
+				  <li><a href="javascript:void(0);" title="Log Out">Log Out</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="container-fluid l-main-nav-bar text-center">
+		<h1 class="l-page-tlt hidden-lg hidden-md hidden-sm">{{displayTextMobileView}}</h1>
+			<a class="navbar-toggle collapsed l-burger-nav" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navbar">
+				<span class="icon-bar top-bar"></span>
+				<span class="icon-bar middle-bar"></span>
+				<span class="icon-bar bottom-bar"></span>
+			</a>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav l-navbar-sm">
+					<li [ngClass]="{'active':tabName=='dashboard'}"><a [routerLink]=" ['Dashboard'] " (click)="tabChange('dashboard')"><i class="zmdi zmdi-view-dashboard"></i>Dashboard</a></li>
+					<li *ngIf="userRole!=='trial'" [ngClass]="{'active':tabName=='prospectsandpartners'}" (click)="tabChange('prospectsandpartners')"><a [routerLink]=" ['ProspectPartners'] "><i class="zmdi zmdi-accounts"></i>Prospects & Partners</a></li>
+					<li [ngClass]="{'active':tabName=='coursecatalog'}" (click)="tabChange('coursecatalog')"><a [routerLink]=" ['CourseCatalog'] "><i class="zmdi zmdi-library"></i>Library</a></li>
+					<!--<li [ngClass]="{'active':tabName=='mycontent'}" (click)="tabChange('mycontent')" disabled="true" class="l-deactive"><a title="Coming Soon!"><i class="zmdi zmdi-folder"></i>My Content</a></li>-->
+					<!--<li disabled="true" class="l-deactive"><a title="Coming Soon!"><i class="zmdi zmdi-folder"></i>My Content</a></li> -->
+					<li class="hidden-lg hidden-md hidden-sm l-extra-nav">
+						<ul>
+							<li><a href="javascript:void(0);" title="Settings">Settings</a></li>
+							<li><a href="javascript:void(0);" title="Contact">Contact</a></li>
+							<li><a href="javascript:void(0);" title="Terms & Conditions">Terms & Conditions</a></li>
+							<li class="l-pdf-btn"><a href="javascript:void(0);" title="Course Catalog PDF" class="btn tertiary"><i class="zmdi zmdi-collection-pdf"></i> Course Catalog PDF</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+	  </div>
+</div>

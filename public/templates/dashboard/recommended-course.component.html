@@ -1,0 +1,17 @@
+<div class="container">
+        <div class="l-sub-tlt-panel">
+            <h2 class="l-sub-tlt pull-left">Courses Recommended for You</h2>
+        </div>
+        <div class="l-recommend l-mb-30">
+            Bookmark courses to make them easier to find later. They'll appear in your
+            <span class="l-acc-name">My Content</span> sections.
+        </div>
+
+        <!-- Recommended course card ST -->
+        <div id="products1" class="row list-group">
+            <course *ngFor="#course of courses" [course-data]="course" [selectCheckbox]="false" [index]="index" [componentName]="'dashboard'"></course>
+        </div>
+        <!-- Recommended course card EN -->
+
+
+</div>

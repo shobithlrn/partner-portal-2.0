@@ -1,0 +1,79 @@
+ 
+<div class="container">
+        <div class="l-sub-tlt-panel">
+            <h2 class="l-sub-tlt pull-left">Playlists Recommended for You</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="l-recommend">
+                    Like what you see? Select "Save to My Content" from the Options Menu to put a copy of this playlist into your <span class="l-acc-name">My Content</span> section.
+                </div>
+				<div  class="l-play-list-wrapper item l-mt-30 l-pl-0">
+    <div class="l-play-list-card" *ngIf="courses">
+        <div class="l-play-list-header">LRN Starter Kit <span class="l-course-count">{{courses.length}} Courses</span>
+            <div class="l-more-info-menu pull-right">
+                    <span class="" data-toggle="dropdown" aria-expanded="false">
+                        <i class="zmdi zmdi-more-vert"></i>
+                    </span>
+                <ul class="dropdown-menu dropdown">
+                    <li class="l-deactive">
+                        <a title="Coming Soon!">
+                            <i class="zmdi zmdi-share"></i> Share Course
+                        </a>
+                    </li>
+                  <!--   <li>
+                        <a href="javascript:;" title="Add to Playlist">
+                            <i class="zmdi zmdi-view-list"></i> Add to Playlist
+                        </a>
+                    </li> -->
+                    <li class="l-deactive">
+                        <a title="Coming Soon!">
+                            <i class="zmdi zmdi-collection-pdf"></i> Export to PDF
+                        </a>
+                    </li>
+                    <!-- <li class="divider"></li>
+                    <li class="text-left">
+                        <a href="javascript:;" title="Preview Course">
+                            <i class="zmdi zmdi-eye" aria-hidden="true"></i> Preview Course
+                        </a>
+                    </li>
+                    <li class="text-left">
+                        <a href="javascript:;" title="View Course Details">
+                            <i class="zmdi zmdi-more" aria-hidden="true"></i> View Course Details
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="l-starting-line">
+                This playlist is ment for someone who is just starting to expore the Partner Portal Catalog.
+            </div>
+        </div>
+
+        <!-- Play list carousel ST -->
+        <div class="col-md-12 col-lg-12 owl-carousel owl-theme" id="dbPlaylist">
+            <playlist-course *ngFor="#course of courses" [course-data]="course"></playlist-course>
+        </div>
+        <div class="l-tell-us">
+            <div class="pull-left">
+            <span class="">
+                <span class="proxima-semibold">Larry N.</span> Shared this course with you.
+            </span>
+                <span class="">
+                Tell us what you think:
+            </span>
+            </div>
+            <div class="pull-right">
+            <span class="">
+                <i class="zmdi zmdi-thumb-up" title=""></i>
+            </span>
+                <span class="">
+                <i class="zmdi zmdi-thumb-down" title=""></i>
+            </span>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+

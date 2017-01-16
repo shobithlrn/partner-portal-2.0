@@ -1,0 +1,9 @@
+<ul class="pagination">
+  <li 
+  [ngClass]="{'disabled':pages==1,'disabled':currentPage==1,'':currentPage>1}" 
+  (click)="prevNavigate()"><a ><span class="l-prv-arrow"></span></a></li>
+  <li><ul [innerHTML]="paginationEle" class="pagination pull-left"></ul></li>
+  <li 
+  [ngClass]="{'disabled':pages==1,'disabled':currentPage==pages,'':currentPage<pages}" 
+  (click)="nextNavigate()"><a ><span class="l-nxt-arrow"></span></a></li>
+</ul>

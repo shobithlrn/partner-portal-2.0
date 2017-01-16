@@ -1,0 +1,137 @@
+<div class="item col-xs-12 col-sm-6 col-md-4 col-lg-4 list-group-item">
+    <!-- list view checkbox -->
+
+    <div class="input-md l-checkbox" *ngIf="selectCheckbox">
+        <input type="checkbox" class="checked-item" name="" id="chechk1">
+        <label class="f-label" for="" id=""></label>
+    </div>
+    <!-- /list view checkbox -->
+	<div class="thumbnail">
+    	<a [routerLink]=" ['Courses-detail',{'id':course.catalog_id,'tab':componentName}] " title="View Course Detail Page" class="l-list-sx-heading">
+            <h4 class="group inner list-group-item-heading">
+                <span class="underline">{{course.title}}</span>
+            </h4>
+			<div class="l-course-sub-tlt">{{course.catalog_id}}</div>  <span *ngIf="course.main_topic">&nbsp;|&nbsp;</span> {{course.main_topic}}
+
+        </a>
+        <div class="l-thumb-img-wrap">
+            <!-- More info menu -->
+            <div class="l-more-info-menu">
+                <span class="" data-toggle="dropdown">
+                    <i class="zmdi zmdi-more-vert" aria-hidden="true"></i>
+                </span>
+                <ul class="dropdown-menu dropdown">
+                    <li class="l-deactive">
+                        <a title="Coming Soon!">
+                        <i class="zmdi zmdi-share" aria-hidden="true"></i> Share Course
+                        </a>
+                    </li>
+                   <li class="l-deactive">
+                        <a title="Coming Soon!">
+                        <i class="zmdi zmdi-collection-pdf" aria-hidden="true"></i> Export to PDF
+                        </a>
+                    </li>
+					 <li class="l-deactive">
+                        <a title="Coming Soon!">
+                        <i class="zmdi zmdi-format-list-bulleted" aria-hidden="true"></i> Add to Playlist
+                        </a>
+                    </li>
+					<li>
+                        <a (click)="bookmark=!bookmark">
+                        <i class="zmdi" [ngClass]="{'zmdi-bookmark-outline':!bookmark,'zmdi-bookmark':bookmark}"></i> <i *ngIf="!bookmark">Add</i><i *ngIf="bookmark">Remove</i> Bookmark
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="text-left">
+						<a href="javascript:;" title="Preview Course" (click)='coursePlayHndler()'>
+						<i class="zmdi zmdi-eye" aria-hidden="true"></i> Preview Course
+						</a>
+                    </li>
+                    <li class="text-left">
+                        <a href="javascript:;" title="View Course Detail Page" [routerLink]=" ['Courses-detail',{'id':course.catalog_id,'tab':componentName}] ">
+						<i class="zmdi zmdi-more" aria-hidden="true"></i> View Course Detail Page
+						</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- / More info menu -->
+            <a  href="javascript:void(0);" (click)='coursePlayHndler(course.system_id)' class="l-video-play">
+                <!-- Play video -->
+                <div class="l-play-button">
+                    <span class="l-valign">
+						<i class="zmdi zmdi-eye" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <!-- / Play video -->
+                <img class="group list-group-image"  src="/course-images/{{course.catalog_id}}.jpg" alt="Course Image" onerror="javascript:this.src='/public/images/image-notfound-blue.jpg'" />
+            </a>
+			<a [routerLink]=" ['Courses-detail',{'id':course.catalog_id,'tab':componentName}] " title="View Course Detail Page">
+				<div class="l-version-facility-pan visible-xs">
+						<div class="l-version-panel">
+							<span class="version-info">Version {{course.version}}</span><br>
+							<span class="l-i-txt">Last update {{course.custdate | date:'shortDate'}}</span>
+						</div>
+						<p class="l-course-facility">
+							<i *ngIf="course.audio=='Y'" class="zmdi zmdi-volume-up" title="English course contains audio" data-toggle="tooltip" role="tooltip"></i>
+							<i *ngIf="course.video=='Y'" class="zmdi zmdi-videocam" title="Course contains video" data-toggle="tooltip" role="tooltip"></i>
+							<i *ngIf="course.is_MobileReady=='Y'" class="zmdi zmdi-smartphone-iphone" title="Mobile ready" data-toggle="tooltip" role="tooltip"></i>
+							<i *ngIf="course.is_MobileReady=='Y'"class="zmdi zmdi-male" title="Accessible (WCAG AA)" data-toggle="tooltip" role="tooltip"></i>
+						</p>
+						<p class="l-course-type-xs"><span *ngIf="course.course_type">{{course.course_type}}</span>
+				</div>
+			</a>
+        </div>
+        <div class="caption">
+        	<a [routerLink]=" ['Courses-detail',{'id':course.catalog_id,'tab':componentName}] " title="View Course Detail Page">
+                <h4 class="group inner list-group-item-heading l-list-md-heading">
+                <span class="underline">
+                    {{course.title}}
+                </span>
+                </h4>
+			</a>
+
+			<div class="l-course-details">
+				<a [routerLink]=" ['Courses-detail',{'id':course.catalog_id,'tab':componentName}] " title="View Course Detail Page">
+					<div class="l-course-content">
+						<div class="l-course-sub-tlt">{{course.catalog_id}}</div>  <span class="l-sx-hide" *ngIf="course.main_topic">|</span>  {{course.main_topic}}
+						<p class="small"><span class="l-space" *ngIf="course.course_type">{{course.course_type}}</span>
+						<span class="l-course-duration" *ngIf="course.estimated_time"><i class="zmdi zmdi-time"></i>{{course.estimated_time}} min</span>
+						</p>
+						<p class="l-course-facility hidden-xs">
+							<i *ngIf="course.audio=='Y'" class="zmdi zmdi-volume-up" title="English course contains audio" data-toggle="tooltip" role="tooltip"></i>
+							<i *ngIf="course.video=='Y'" class="zmdi zmdi-videocam" title="Course contains video" data-toggle="tooltip" role="tooltip"></i>
+							<i *ngIf="course.is_MobileReady=='Y'" class="zmdi zmdi-smartphone-iphone" title="Mobile ready" data-toggle="tooltip" role="tooltip"></i>
+							<i *ngIf="course.is_MobileReady=='Y'" class="zmdi zmdi-male" title="Accessible (WCAG AA)" data-toggle="tooltip" role="tooltip"></i>
+						</p>
+						<div class="l-course-discription l-short-desc-ellipsis" [innerHTML]="course.description"></div>
+
+						<div class="l-language-panel visible-xs">
+							<a [title]="lang.split(':')[0] | uppercase" *ngFor="#lang of disPlaylanguages" (click)="coursePlayHndler(lang.split(':')[2])"> {{lang.split(':')[1] | uppercase}} </a>
+							<a class="l-more-link" *ngIf="languages.length>10" [routerLink]=" ['Courses-detail',{'id':course.catalog_id,'tab':componentName}] ">More...</a>
+						</div>
+					</div>
+				</a>
+				<div class="l-fixed-col hidden-xs">
+					<a [routerLink]=" ['Courses-detail',{'id':course.catalog_id,'tab':componentName}] " title="View Course Detail Page">
+						<div class="l-version-panel">
+							<span class="version-info">Version {{course.version}}</span><br>
+							<span class="l-i-txt">Last update {{course.custdate | date:'shortDate'}}</span>
+						</div>
+					</a>
+					<div class="l-language-panel">
+						<a href="javascript:void(0);" [title]="lang.split(':')[0] | uppercase" *ngFor="#lang of disPlaylanguages" (click)="coursePlayHndler(lang.split(':')[2])" > {{lang.split(':')[1] | uppercase}} </a>
+						<a href="javascript:void(0);" class="l-more-link" *ngIf="languages.length>10" [routerLink]=" ['Courses-detail',{'id':course.catalog_id,'tab':componentName}] ">More...</a>
+					</div>
+				</div>
+			</div>
+	    </div>
+		<div class="label-new-holds">
+			<span class="label label-warning pull-right courseLabelPanel"><i class="courseLabel zmdi zmdi-star-circle" *ngIf="isNewCourse"></i><i class="courseLabel zmdi zmdi-refresh-alt" *ngIf="!isNewCourse"></i> {{courseType}}</span>
+			<!-- <span class="label label-warning pull-right"><i class="zmdi zmdi-refresh-alt"></i> Updated!</span> -->
+		</div>
+		 <a class="l-bookmark-holds" title="Add to Bookmark" (click)="bookmark=!bookmark">
+			<i class="zmdi" [ngClass]="{'zmdi-bookmark-outline':!bookmark,'zmdi-bookmark':bookmark}"></i>
+		</a>
+    </div>
+
+</div>

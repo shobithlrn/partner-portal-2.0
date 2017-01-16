@@ -1,0 +1,105 @@
+
+> app@0.0.0 build C:\Users\shobith.shetty\Desktop\my_data\self_learning\webpack\angular2-webpack
+> rimraf dist && webpack --progress --profile --bail
+
+
+[at-loader] Using typescript@2.0.10 from typescript and "tsconfig.json" from C:\Users\shobith.shetty\Desktop\my_data\self_learning\webpack\angular2-webpack/tsconfig.json.
+
+
+[at-loader] Checking started in a separate process...
+
+[at-loader] Ok, 3.222 sec.
+Hash: f5c3c8c9172bb2ea5ca5
+Version: webpack 2.1.0-beta.25
+Time: 115827ms
+                                                        Asset       Size  Chunks             Chunk Names
+fonts/material-design/fonts/Material-Design-Iconic-Font.woff2    38.4 kB          [emitted]  
+                            js/vendor.f5c3c8c9172bb2ea5ca5.js     1.1 MB       0  [emitted]  vendor
+                         js/polyfills.f5c3c8c9172bb2ea5ca5.js     123 kB       2  [emitted]  polyfills
+                             css/app.f5c3c8c9172bb2ea5ca5.css  128 bytes       1  [emitted]  app
+                        js/vendor.f5c3c8c9172bb2ea5ca5.js.map    8.09 MB       0  [emitted]  vendor
+                           js/app.f5c3c8c9172bb2ea5ca5.js.map     667 kB       1  [emitted]  app
+                         css/app.f5c3c8c9172bb2ea5ca5.css.map  109 bytes       1  [emitted]  app
+                     js/polyfills.f5c3c8c9172bb2ea5ca5.js.map     942 kB       2  [emitted]  polyfills
+                                                   index.html  582 bytes          [emitted]  
+                                            images/bullet.jpg    1.51 kB          [emitted]  
+                                     images/catalyst-logo.jpg    8.56 kB          [emitted]  
+                                     images/catalyst-logo.png    2.39 kB          [emitted]  
+                               images/image-notfound-blue.jpg    16.9 kB          [emitted]  
+                              images/image-notfound-white.jpg    16.9 kB          [emitted]  
+                                          images/logo-lrn.png    29.5 kB          [emitted]  
+                                     images/lrn-launchpad.png    2.51 kB          [emitted]  
+                                     images/lrn-launchpad.jpg    9.78 kB          [emitted]  
+                                        images/hero-globe.jpg     154 kB          [emitted]  
+                                          images/lrn-logo.jpg    11.2 kB          [emitted]  
+                                         images/lrn-cover.jpg     189 kB          [emitted]  
+                                           images/media-2.png     120 kB          [emitted]  
+                                           images/media-1.png     292 kB          [emitted]  
+                                           images/media-3.png     182 kB          [emitted]  
+                                images/reset-password-btn.jpg    9.55 kB          [emitted]  
+                                       images/sign-in-btn.jpg    10.3 kB          [emitted]  
+                           images/ui-icons_444444_256x240.png    6.99 kB          [emitted]  
+                           images/ui-icons_555555_256x240.png    6.99 kB          [emitted]  
+                                           images/media-4.png     182 kB          [emitted]  
+                           images/ui-icons_777620_256x240.png    4.55 kB          [emitted]  
+                           images/ui-icons_777777_256x240.png       7 kB          [emitted]  
+                           images/ui-icons_cc0000_256x240.png    4.55 kB          [emitted]  
+                           images/ui-icons_ffffff_256x240.png     6.3 kB          [emitted]  
+                                     images/media-honesty.png     477 kB          [emitted]  
+                                  images/favicon-catalyst.ico    1.15 kB          [emitted]  
+  fonts/material-design/fonts/Material-Design-Iconic-Font.svg     239 kB          [emitted]  
+fonts/material-design/css/material-design-iconic-font.min.css    70.8 kB          [emitted]  
+    fonts/material-design/css/material-design-iconic-font.css    90.5 kB          [emitted]  
+  fonts/material-design/fonts/Material-Design-Iconic-Font.eot    42.5 kB          [emitted]  
+  fonts/material-design/fonts/Material-Design-Iconic-Font.ttf    99.2 kB          [emitted]  
+ fonts/material-design/fonts/Material-Design-Iconic-Font.woff    50.3 kB          [emitted]  
+                                 fonts/proxima-nova/_DS_Store    10.2 kB          [emitted]  
+                               js/app.f5c3c8c9172bb2ea5ca5.js    97.9 kB       1  [emitted]  app
+                      fonts/proxima-nova/generator_config.txt  612 bytes          [emitted]  
+              fonts/proxima-nova/proxima_nova_black-demo.html    38.3 kB          [emitted]  
+          fonts/proxima-nova/proxima_nova_black-webfont.woff2    20.1 kB          [emitted]  
+           fonts/proxima-nova/proxima_nova_black-webfont.woff    26.2 kB          [emitted]  
+            fonts/proxima-nova/proxima_nova_bold_it-demo.html    38.4 kB          [emitted]  
+        fonts/material-design/material-design-iconic-font.zip     257 kB          [emitted]  
+         fonts/proxima-nova/proxima_nova_bold_it-webfont.woff    29.3 kB          [emitted]  
+        fonts/proxima-nova/proxima_nova_bold_it-webfont.woff2    22.5 kB          [emitted]  
+               fonts/proxima-nova/proxima_nova_bold-demo.html    38.3 kB          [emitted]  
+            fonts/proxima-nova/proxima_nova_bold-webfont.woff    26.9 kB          [emitted]  
+           fonts/proxima-nova/proxima_nova_bold-webfont.woff2    20.7 kB          [emitted]  
+           fonts/proxima-nova/proxima_nova_light_it-demo.html    38.4 kB          [emitted]  
+        fonts/proxima-nova/proxima_nova_light_it-webfont.woff    29.4 kB          [emitted]  
+       fonts/proxima-nova/proxima_nova_light_it-webfont.woff2    22.7 kB          [emitted]  
+          fonts/proxima-nova/proxima_nova_light-webfont.woff2    20.5 kB          [emitted]  
+              fonts/proxima-nova/proxima_nova_light-demo.html    38.3 kB          [emitted]  
+           fonts/proxima-nova/proxima_nova_light-webfont.woff    26.4 kB          [emitted]  
+             fonts/proxima-nova/proxima_nova_reg_it-demo.html    38.4 kB          [emitted]  
+          fonts/proxima-nova/proxima_nova_reg_it-webfont.woff    29.2 kB          [emitted]  
+            fonts/proxima-nova/proxima_nova_reg-webfont.woff2    20.6 kB          [emitted]  
+                fonts/proxima-nova/proxima_nova_reg-demo.html    38.4 kB          [emitted]  
+         fonts/proxima-nova/proxima_nova_reg_it-webfont.woff2    22.5 kB          [emitted]  
+          fonts/proxima-nova/proximanova-blackit-webfont.woff    27.6 kB          [emitted]  
+             fonts/proxima-nova/proxima_nova_reg-webfont.woff    26.7 kB          [emitted]  
+             fonts/proxima-nova/proximanova-blackit-demo.html    38.4 kB          [emitted]  
+         fonts/proxima-nova/proximanova-blackit-webfont.woff2      21 kB          [emitted]  
+          fonts/proxima-nova/proximanova-extrabldit-demo.html    38.4 kB          [emitted]  
+       fonts/proxima-nova/proximanova-extrabldit-webfont.woff    28.7 kB          [emitted]  
+      fonts/proxima-nova/proximanova-extrabldit-webfont.woff2    22.1 kB          [emitted]  
+         fonts/proxima-nova/proximanova-semibold-webfont.woff    26.9 kB          [emitted]  
+            fonts/proxima-nova/proximanova-semibold-demo.html    38.4 kB          [emitted]  
+                fonts/proxima-nova/proximanova-thin-demo.html    38.3 kB          [emitted]  
+        fonts/proxima-nova/proximanova-semibold-webfont.woff2    20.8 kB          [emitted]  
+             fonts/proxima-nova/proximanova-thin-webfont.woff    25.7 kB          [emitted]  
+      fonts/proxima-nova/specimen_files/grid_12-825-55-15.css    4.72 kB          [emitted]  
+            fonts/proxima-nova/proximanova-thin-webfont.woff2    19.9 kB          [emitted]  
+              fonts/proxima-nova/proximanova-thinit-demo.html    38.4 kB          [emitted]  
+           fonts/proxima-nova/proximanova-thinit-webfont.woff    28.2 kB          [emitted]  
+                            fonts/proxima-nova/stylesheet.css    2.73 kB          [emitted]  
+    fonts/proxima-nova/specimen_files/specimen_stylesheet.css    7.71 kB          [emitted]  
+          fonts/proxima-nova/proximanova-thinit-webfont.woff2    21.8 kB          [emitted]  
+ [326] ./src async 160 bytes {0} [built]
+       [] -> factory:50ms building:30ms = 80ms
+    + 727 hidden modules
+Child html-webpack-plugin for "index.html":
+        + 1 hidden modules
+Child extract-text-webpack-plugin:
+        + 2 hidden modules

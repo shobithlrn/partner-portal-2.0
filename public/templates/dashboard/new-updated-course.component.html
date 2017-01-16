@@ -1,0 +1,21 @@
+<div class="info-container">
+	<div class="l-sub-tlt-panel">
+		<h3 class="l-sub-tlt pull-left"> New and Recently Updated Courses </h3>
+		<!-- Toggle - list and grid view -->
+		<div class="btn-group pull-right" style="display:none">
+			<a href="javascript:;" id="list" class="btn btn-default btn-sm">
+				<span class="glyphicon glyphicon-th-list"></span> List
+			</a>
+			<a href="javascript:;" id="grid" class="btn btn-default btn-sm active-btn">
+				<span class="glyphicon glyphicon-th"></span> Grid
+			</a>
+		</div>
+		<!-- / Toggle - list and grid view -->
+	</div>
+	<div class="clearfix"></div>
+	<!-- Course listing -->
+	<div id="products" class="row list-group">
+		<course *ngFor="#course of courses, #index=index" [course-data]="course" [selectCheckbox]="false" [index]="index" [componentName]="'dashboard'"></course>
+	</div>
+	<!-- / Course listing -->
+</div>

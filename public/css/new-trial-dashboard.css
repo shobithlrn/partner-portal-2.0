@@ -1,0 +1,544 @@
+/* common css ST */
+.proxima-light {
+    font-family: "proxima_novalight";
+}
+.proxima-bold {
+	font-family: "proxima_nova_rgbold"
+}
+.l-mt-20 {
+	margin-top: 20px;
+}
+.l-mb-30 {
+	margin-bottom: 30px;
+}
+.l-mt-40 {
+	margin-top: 40px;
+}
+.l-pb-100 {
+	padding-bottom: 100px;
+}
+.l-pb-0 {
+	padding-bottom: 0;
+}
+a {
+	color: #0277BD;
+}
+a.link-text:hover,
+a.link-text:focus {
+	text-decoration: underline;
+	color: #0277BD;
+}
+/* common css EN */
+.l-recommend {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 15px;
+}
+.recommended-panel{
+	width: 100%;
+}
+.grey-wrapper {
+	padding-bottom:30px;
+	background-color: #F3F3F3; 
+	background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    position: absolute;
+    width: 100%; 
+    left: 0;
+    right: 0;
+    top: auto;
+}
+.grey-wrapper .l-sub-tlt-panel {
+	padding-top: 45px;
+	padding-bottom: 15px;
+}
+.grey-wrapper h2.l-sub-tlt {
+	font-family: 'proxima_nova_rgregular';
+}
+.l-db-hero-wrapper {
+	height: 550px;
+	width: 100%;
+}
+.l-db-hero {
+	background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+	height: 550px;
+    left: 0;
+    right: 0;
+    top: auto;
+}
+.l-hero-content {
+    color: #ffffff;
+    z-index: 2;
+    padding: 0;
+    text-align: center;
+    display: table;
+    height: 100%;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+.l-hero-content h2 {
+	line-height: 60px;
+	font-size: 44px;
+	font-family: "proxima_novalight";
+	color: #ffffff;
+	margin-bottom: 35px;
+}
+.l-hero-content .btn{
+	font-family: "proxima_nova_rgbold";
+	font-size: 20px;
+	height: 50px;
+	line-height: 50px;
+}
+.l-hero-cell {
+	max-width: 1100px;
+	margin: 0 auto;
+	display: table-cell;
+	height: 100%;
+	vertical-align: middle;
+}
+.l-db-card .thumbnail:hover {
+	background: #ffffff;
+	cursor: default;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.l-db-card .thumbnail .label-new-holds {
+	top: 0;
+	right: 0;
+}
+.l-db-card .thumbnail > .list-group-item-heading:first-child {
+	font-family:'proxima_novalight';
+	color: #003e7e;
+}
+.l-course-brief {
+	color: #333;
+    font-size: 1em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.l-db-card .item.list-group-item {
+	padding-left: 15px;
+}
+.l-db-card .item.list-group-item .l-course-details .l-course-content {
+	margin-right: 0;
+	margin-bottom: 15px;
+}
+
+.l-recommand-wrapper .thumbnail .label-new-holds {
+	right: 52px;
+}
+.l-db-card .caption a:hover {
+	cursor: default;
+}
+.l-db-card .thumbnail:hover .underline {
+	border-bottom: 0;
+}
+.l-recommand-wrapper .list-group-item-heading {
+	margin-top: 5px;
+	float: left;
+	position: relative;
+	width: 100%;
+	max-width: 16em;
+	/*white-space: normal;
+	*min-height: 55px;*/
+}
+.l-recommand-wrapper .list-group .thumbnail .caption {
+	padding: 26px 10px 15px;
+}
+.l-db-card .list-group-item .zmdi-smartphone-iphone {
+	width: 24px;
+}
+
+.l-play-list-card .list-group-item-heading, .l-play-list-card .l-course-details .l-course-content{
+	white-space: nowrap;overflow: hidden;text-overflow: ellipsis;
+}
+
+.l-recommand-wrapper .caption .l-bookmark-holds {
+	bottom: auto;
+    top: 0;
+}
+.l-recommand-wrapper .thumbnail > .l-course-content  {
+	padding-left: 10px;
+	padding-right: 10px;
+	display:inline-block;
+	width:100%;
+}
+.l-recommand-wrapper .l-thumb-img-wrap {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.l-recommand-wrapper .thumbnail > .l-course-content  {
+	padding-top: 20px;
+	margin-top: 5px;
+}
+
+.l-tell-us  {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	background: #F7FAFC;
+}
+.l-recommand-wrapper .thumbnail > .l-tell-us  {
+	width: 100%;
+	padding: 15px 10px;
+}
+.l-recommand-wrapper .l-course-facility .zmdi:before {
+	font-size: 23px;
+}
+.l-tell-us > div.pull-left:first-child {
+	width: 69%;
+	max-width: 372px;
+	color: rgba(0,0,0, 0.54);
+}
+.l-tell-us > .pull-right {
+	position: relative;
+	padding: 10px 0 2px;
+}
+.l-tell-us .pull-right span i{
+	vertical-align: bottom;
+}
+.l-tell-us .pull-right span:first-child {
+	border-right: 1px solid #dddddd;
+}
+.l-tell-us .pull-right span:last-child {
+	padding-left: 15px;
+	display: inline-block;
+}
+.l-tell-us .pull-right span:first-child {
+	padding-right: 15px;
+	display: inline-block;
+}
+.l-tell-us .zmdi-thumb-up:before,
+.l-tell-us .zmdi-thumb-down:before {
+	color: rgba(0,0,0, 0.38);
+	font-size: 32px;
+	line-height: 25px;
+}
+.l-play-list-wrapper.l-pl-0 .l-play-list-card,
+.l-pb-0 {
+	padding-bottom: 0;
+}
+.l-play-list-header .l-course-count {
+	font-size: 0.80em;
+	color: #333;
+}
+.l-play-list-wrapper.l-pl-0 .l-play-list-card,
+.l-play-list-wrapper.l-pl-0 {
+	margin-bottom: 0;
+}
+.l-play-list-wrapper.l-pl-0,
+.l-pl-0 {
+	padding-left: 0;
+}
+.l-starting-line {
+	font-size: 1em;
+	font-family: 'proxima_nova_rgregular';
+	color: rgba(0,0,0, 0.87);
+	display: block;
+	margin-top: 10px;
+}
+.l-play-list-card .l-tell-us {
+	padding: 25px 45px 20px;
+}
+.l-play-list-card .l-tell-us > .pull-right {
+	padding: 0 0 2px;
+	float: left !important;
+	margin-left: 30px;
+}
+.l-play-list-card .l-play-list-header .l-course-count {
+	font-family: 'proxima_novaregular_italic';
+}
+.l-play-list-card .l-tell-us .pull-right span:first-child {
+	padding-right: 24px;
+	margin-right: 5px;
+}
+.l-top-divider {
+	border-top: 1px solid rgba(0,0,0,0.2);
+	margin-top: 15px;
+}
+.l-tell-us .zmdi {
+	cursor: pointer;
+}
+.l-tell-us .l-like .zmdi-thumb-up:before,
+.l-tell-us .l-like .zmdi-thumb-down:before{
+	color: #46b3b1;
+}
+.l-play-list-card .l-more-info-menu{
+	background: transparent;
+    color: rgba(0,0,0, 0.87);
+    left: auto;
+    right: 7px;
+    margin-top: 15px;
+}
+
+/* Feedback messages ST */
+.alert-feedback {
+	color: #ffffff;
+	background-color: rgba(0,0,0,0.95);
+	position: fixed;
+	margin: 0 auto;
+	right: 0;
+	left: 0;
+	top: 50px;
+	z-index: 9999;
+	min-width: 250px;
+	width: 80%;
+	max-width: 500px;
+}
+.alert .close {
+	position: absolute;
+	top: 0;
+	right: 7px;
+	color: rgba(255,255,255, 0.7);
+	text-shadow: none;
+}
+.alert .close:hover {
+	color: rgba(255,255,255, 0.9);
+	opacity: 1;
+}
+.alert .close .zmdi-close:before {
+	font-size: 16px;
+}
+/* Feedback messages EN */
+
+
+.l-db-card .item.list-group-item {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.l-db-card .item .caption .l-course-details {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    min-height: 50px;
+}
+.l-db-card .item.list-group-item .l-course-details .l-course-content:first-child {
+    margin-bottom: 0;
+}
+.l-db-card .item.list-group-item .l-course-details .btn-primary {
+    margin-top: 15px;
+}
+
+.l-db-card .item.list-group-item .l-course-duration {
+    left: 175px;
+}
+.l-db-card .item.list-group-item .thumbnail {
+    padding: 10px;
+}
+.l-db-card .list-group-item .l-course-facility {
+    bottom: 0;
+    top: auto;
+    position: relative;
+    left: 0;
+}
+
+.l-db-card .thumbnail > .list-group-item-heading:first-child {
+    margin-top: 15px;
+}
+.l-db-card .thumbnail > .list-group-item-heading,
+.l-recommand-wrapper .list-group-item-heading {
+    margin-top: 10px;
+}
+.l-db-card .thumbnail > .list-group-item-heading:first-child {
+    font-size: 2.2em;
+    white-space: normal;
+}
+
+.l-recommand-wrapper .l-course-content .small {
+    font-style: normal;
+    font-family: 'proxima_novaregular_italic';
+    color: rgba(0,0,0, 0.87);
+    margin-top: 0;
+}
+.l-db-card .item.list-group-item .l-course-duration {
+    left: 175px;
+}
+.l-db-card .item.list-group-item .l-course-details .l-course-content {
+    padding-top: 0;
+    min-height: 90px;
+}
+
+.l-db-card .list-group-item .zmdi:before {
+    font-size: 32px;
+    padding-left: 0;
+}
+.l-db-card .l-course-facility i {
+    width: 28px;
+    margin-right: 20px;
+    height: 32px;
+}
+.l-db-card .l-course-duration .zmdi-time:before {
+    font-size: 18px;
+}
+.l-db-card .l-course-content .small {
+    margin-top: 14px;
+    margin-bottom: 25px;
+    font-family: 'proxima_novaregular_italic';
+}
+.l-db-card .l-course-duration {
+    font-family: 'proxima_nova_rgregular';
+    margin-left: 25px;
+}
+.l-db-card .item.list-group-item .thumbnail{
+    padding: 30px;
+}
+.l-db-card .l-course-content ~ .btn-primary{
+    right: 0;
+    width: 220px;
+}
+.l-db-card .item .caption .l-course-details {
+    padding-bottom: 0;
+}
+.l-db-card .item.list-group-item {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.l-db-card .item.list-group-item .thumbnail img {
+    width: 448px;
+    height: 332px;
+}
+.l-db-card .item.list-group-item .caption {
+    margin-left: 460px;
+    padding-top: 25px;
+    padding-right: 0;
+}
+.l-db-card .l-play-button:before {
+    top: 54%;
+}
+.l-db-card .thumbnail > .list-group-item-heading {
+    font-size: 2.3em;
+}
+.l-db-card .thumbnail .label-new-holds .label {
+    padding-top: 14px;
+    padding-bottom: 8px;
+    font-size: 1em;
+    padding-left: 39px;
+    font-family:'proxima_novasemibold';
+}
+.l-db-card .thumbnail .label-new-holds .zmdi-star-circle:before {
+    font-size: 28px;
+    top: 14px;
+    left: 9px;
+}
+.l-recommand-wrapper .list-group-item-heading {
+    /*min-height: 55px;
+    white-space: normal;*/
+    margin-top: 5px;
+}
+
+.l-recommand-wrapper .list-group-item-heading {
+    max-width: 13em;
+}
+
+
+/* Styling for Mobile */
+
+@media only screen and (max-width: 767px) {
+	.l-recommand-wrapper .list-group-item-heading {
+		max-width: 100%;
+	}
+	.l-hero-content .btn {
+		font-size: 18px;
+	}
+	.l-play-list-card .l-play-list-header {
+		padding: 15px 15px 10px;
+	}
+	.l-play-list-wrapper {
+		margin-top: 25px;
+	}
+
+	.l-tell-us .zmdi-thumb-up:before,
+	.l-tell-us .zmdi-thumb-down:before {
+		font-size: 24px;
+	}
+	.l-tell-us > div.pull-left:first-child {
+		width: 68%;
+	}
+	.l-tell-us .pull-right span:last-child {
+		padding-left: 2px;
+	}
+	.l-play-list-card .l-more-info-menu {
+		right: 4px;
+		margin-top: 8px;
+	}
+	.l-recommand-wrapper .list-group-item-heading {
+		min-height: inherit;
+		min-height: initial;
+	}
+    
+.l-tell-us .pull-right span:first-child {
+		margin-right: 10px;
+	}
+	.l-db-card .list-group-item .l-list-md-heading,
+	.l-db-card .item.list-group-item .l-course-details.l-course-discription,
+	.l-db-card .list-group-item .caption,
+	.l-db-card .item.list-group-item .l-course-discription .l-course-content{
+		display: block;
+	}
+	.l-hero-content h2 {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.l-db-card .item.list-group-item .caption {
+		float: left;
+		margin-left: 0;
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.l-db-card .list-group-item-heading {
+		white-space: normal;
+	}
+	.l-db-card .list-group-item .l-thumb-img-wrap,
+	.l-db-card .item.list-group-item .thumbnail img {
+		width: 100%;
+		height: 100%;
+		max-height: 300px;
+	}
+	.l-db-card .item.list-group-item .l-course-discription .l-course-content {
+		margin-bottom: 20px;
+	}
+	.l-db-card .item.list-group-item .l-course-duration {
+		position: relative;
+		top: auto;
+		left: auto;
+		font-size: 12px;
+	}
+	.l-recommand-wrapper .l-course-content .small {
+		margin-top: 0;
+	}
+    .l-db-card .item.list-group-item a .l-course-details .l-course-content {
+        margin-bottom: 0;
+    }
+    
+    .item.list-group-item .caption .l-course-details {
+        padding-bottom: 0;
+    }
+    
+    .l-db-card .list-group-item .l-course-facility {
+        margin-top: 10px;
+    }
+    
+	.l-mt-40 {
+		margin-top: 5px;
+	}
+	.grey-wrapper .l-sub-tlt-panel {
+		padding-top: 20px;
+	}
+ 
+	.l-recommand-wrapper {
+		margin-bottom: 0;
+	}
+	.info-container.l-top-divider {
+		margin-top: 10px;
+	}
+	.l-play-list-card .l-tell-us .pull-right span:last-child {
+		padding-left: 15px;
+	}
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<p>Loading...</p>
+
+<!--<form name="sso" action="https://lrncoursecatalog-lcec.qa7.lrn.com/app/sso" method="post">-->
+<form name="sso" action="https://lrncoursecatalog-lcec.lrn.com/app/sso" method="post">
+    <input type="hidden" id="trust_key" name="trust_key" value="">
+    <input type="hidden" id="user_id" name="user_id" value="">
+    <input type="hidden" id="target_path" name="target_path" value="">
+    <input type="hidden" id="date" name="date" value="">
+</form>
+
+<script>
+    function getUrlValue( str ){
+        var searchString = window.location.search.substring(1);
+        var variableArray = searchString.split('&');
+        for ( var i = 0 ; i < variableArray.length ; i++ ) {
+            var keyValuePair = variableArray[i].split('=');
+            if ( keyValuePair[0] == str ) {
+                return decodeURIComponent( keyValuePair[1] );
+            }
+        }
+    }
+    var trust_key   = getUrlValue( 'trust_key' );
+    var user_id     = getUrlValue( 'user_id' );
+    var target_path = getUrlValue( 'target_path' );
+    var date        = getUrlValue( 'date' );
+    document.getElementById('trust_key').value      = trust_key;
+    document.getElementById('user_id').value        = user_id;
+    document.getElementById('target_path').value    = target_path;
+    document.getElementById('date').value           = date;
+    setTimeout(function(){
+        document.sso.submit();
+    }, 100);
+</script>
+
+</body>
+</html>

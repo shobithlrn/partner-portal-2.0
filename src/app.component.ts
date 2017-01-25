@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   constructor() {
-  	require('./../../public/js/course-catalog.js').setFunctionality();
+  	//require('./../../public/js/course-catalog.js').setFunctionality();
   }
 }

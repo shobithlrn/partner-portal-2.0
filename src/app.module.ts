@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { FooterComponent } from './footer.component';
-import { HeaderComponent } from './header.component';
-import { routing } from './app.routing';
+//Root Components
+import { AppComponent,FooterComponent,HeaderComponent,routing } from './';
+
+//Login Compoments
+import { LoginComponent } from './components/login';
+
+//services
+import {RouteProtection, ModalWindowComponent} from './utils'
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
@@ -20,10 +24,12 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
+    ModalWindowComponent
   ],
   providers: [
-    
+    RouteProtection
   ],
   bootstrap: [AppComponent]
 })

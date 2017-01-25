@@ -13,6 +13,8 @@ var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 /**
  * Env
  * Get npm lifecycle event to identify the environment
+ e.g npm run build
+ npm run server
  */
 var ENV = process.env.npm_lifecycle_event;
 var isTestWatch = ENV === 'test-watch';

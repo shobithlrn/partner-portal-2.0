@@ -1,47 +1,26 @@
-<div class="l-login-cover">
-	<div class="form-login login-top-pad">
-
- <!--Login ST-->
-        <div id="loginPanel">
-			<h1 class="form-signin-heading text-center">
-				<!-- Welcome to the Catalyst! -->
-				Convert Principled Behavior Into Economic Value And Reduced Risk
-			</h1>
-			<p class="l-msg">
-				Over 300 companies around the world trust LRN to inspire principled performance in their organization. Today, it’s your turn.
-			</p>
-			<div class="login-form clearfix">
-				<form  [ngFormModel]="loginForm"  (ngSubmit)="doLogin()" novalidate>
-				  <div class="login-form">
-					<div class="alert alert-danger" [hidden]="pwdErr">
-						<p class="l-msg-icon"><i class="zmdi zmdi-mood-bad"></i>{{pwdErrMsg}}</p>
-					</div>
-					<div class="form-group">
-					  <label>Email</label>
-					  <input ngControl="email" type="email" class="form-control" id="exampleInputEmail1"  placeholder="Email" maxlength="40" autofocus required>
-					  <span class="text-danger" *ngIf="(isSubmitted && !email.valid )">Please enter valid email</span>
-						<!--<span class="alert-danger" [hidden]="!((email.dirty && !email.valid && email.errors.incorrectMailFormat)||(isSubmitted && !email.valid && (email.errors?email.errors.incorrectMailFormat:true)))">Please enter valid email</span> -->
-
-					</div>
-					<div class="form-group">
-					  <label>Password</label>
-					  <input ngControl="password" type="password" class="form-control" id="loginInputPassword" placeholder="Password">
-					  <span class="text-danger" *ngIf="(isSubmitted && !password.valid)">Please enter valid password</span>
-					</div>
-					<button class="btn btn-lg btn-primary btn-block mar-t25" type="submit" title="Sign in" id="signInBtn">Sign in</button>
-				</div>
-				</form>
-			</div>
-            <ul class="login-link clearfix">
-                <li><a [routerLink]="['Forgotpassword']" class="btn btn-link" title="Forgot Password?" id="forgotPasswordLink">Forgot Password?</a>
-				<!-- <span class="l-link-divider">|</span>
-				<a href="javascript:void(0);" role="link" title="Contact LRN for a Trial Account" class="btn btn-link" id="trialAccount">
-				Contact LRN for a Trial Account
-				</a> -->
-				</li>
-            </ul>
-        </div>
-        <!--Login EN-->
-
-</div>
-</div>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input 
+    		type="email" 
+    		class="form-control" 
+    		id="exampleInputEmail1" 
+    		placeholder="Email"
+    		ngModel
+    		name="username"
+    		required
+    		pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input 
+    		type="password" 
+    		class="form-control" 
+    		id="exampleInputPassword1" 
+    		placeholder="Password" 
+    		ngModel
+    		name="password"
+    		required>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

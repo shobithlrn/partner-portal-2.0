@@ -1,0 +1,3 @@
+^C^CTerminate batch job (Y/N)? 
+^C^CTerminate batch job (Y/N)? 
+^CC:\Program Files\nodejs\node.exe was unexpected at this time.
